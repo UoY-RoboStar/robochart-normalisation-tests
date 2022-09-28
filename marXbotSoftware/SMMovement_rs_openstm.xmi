@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:C2S="http://www.robocalc.circus/C2S" xmlns:robochart="http://www.robocalc.circus/RoboChart" xmlns:robosim="http://www.robocalc.circus/RoboSim">
+  <C2S:RSSeqOpenStateMachine>
+    <left xsi:type="C2S:RSBasicOpenStateMachine">
+      <nodes xsi:type="C2S:EInitial" name="i0"/>
+      <transitions name="t0" source="/0/@left/@nodes.0" target="/0/@right/@left/@nodes.0"/>
+    </left>
+    <right xsi:type="C2S:RSSeqOpenStateMachine">
+      <left xsi:type="C2S:RSBasicOpenStateMachine">
+        <nodes xsi:type="C2S:EState" name="Moving"/>
+        <transitions name="t1" source="/0/@right/@left/@nodes.0" target="/0/@right/@right/@nodes.0"/>
+      </left>
+      <right xsi:type="C2S:RSBasicOpenStateMachine">
+        <nodes xsi:type="C2S:EState" name="Turning"/>
+        <transitions name="t2" source="/0/@right/@right/@nodes.0" target="/0/@right/@left/@nodes.0"/>
+      </right>
+    </right>
+  </C2S:RSSeqOpenStateMachine>
+  <robosim:SimOperationDef name="normal_SMMovement_Moving_entry">
+    <rInterfaces href="#/5"/>
+    <rInterfaces href="../robochart/main.rct#//@interfaces.6"/>
+    <nodes xsi:type="robochart:Initial" name="i"/>
+    <nodes xsi:type="robochart:Junction" name="t_j_2_2"/>
+    <nodes xsi:type="robochart:Final" name="f"/>
+    <transitions name="t" source="/1/@nodes.0" target="/1/@nodes.1">
+      <action xsi:type="robosim:SimCall" operation="/2/@operations.0">
+        <args xsi:type="robochart:RefExp" ref="/5/@variableList.0/@vars.0"/>
+        <args xsi:type="robochart:IntegerExp"/>
+      </action>
+    </transitions>
+    <transitions name="t_t_2_2" source="/1/@nodes.1" target="/1/@nodes.2">
+      <action xsi:type="robochart:Call">
+        <operation href="../robochart/main.rct#//@interfaces.6/@operations.0"/>
+        <args xsi:type="robochart:IntegerExp" value="1"/>
+      </action>
+    </transitions>
+    <inputContext xsi:type="robosim:InputContext"/>
+    <outputContext xsi:type="robosim:OutputContext" rInterfaces="/2"/>
+  </robosim:SimOperationDef>
+  <robochart:Interface name="req_normal_SMMovement_Moving_entry_platOp">
+    <operations name="move">
+      <parameters name="lv">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="../../../../../plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </parameters>
+      <parameters name="av">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="../../../../../plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </parameters>
+    </operations>
+  </robochart:Interface>
+  <robochart:Interface name="req_normal_SMMovement_Moving_entry_softOp"/>
+  <robochart:Interface name="req_normal_SMMovement_Moving_entry_plat"/>
+  <robochart:Interface name="req_normal_SMMovement_Moving_entry_local">
+    <variableList modifier="CONST">
+      <vars name="lvel">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="../../../../../plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.4"/>
+        </type>
+      </vars>
+    </variableList>
+  </robochart:Interface>
+  <robochart:VariableList/>
+  <robochart:VariableList/>
+  <robochart:VariableList modifier="CONST"/>
+</xmi:XMI>

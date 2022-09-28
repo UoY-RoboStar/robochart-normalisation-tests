@@ -1,1 +1,167 @@
+package pkg465_main interface MovementI {
+	move ( lv : real , av : real )
+}
+
+interface ObstacleI {
+	event obstacle
+}
+
+interface req_normal_SMMovement_Moving_entry {
+	move ( lv : real , av : real )
+	const lvel : real
+}
+
+interface I_normal_SMMovement_Moving_entry {
+	normal_SMMovement_Moving_entry ( )
+}
+
+interface ItStop {
+	tStop ( )
+}
+
+interface IdeadlineCheck {
+	deadlineCheck ( d : nat )
+}
+
+interface IwaitOp {
+	waitOp ( i : nat )
+}
+
+interface IwaitInterval {
+	waitInterval ( m : nat , n : nat )
+}
+
+controller Movement {
+	uses ObstacleI requires MovementI opref Movement_ref_normal_SMMovement_Moving_entry = normal_SMMovement_Moving_entry
+	opref Movement_ref_tStop = tStop
+	opref Movement_ref_deadlineCheck = deadlineCheck
+	opref Movement_ref_waitOp = waitOp
+	opref Movement_ref_waitInterval = waitInterval
+	sref stm_ref0 = SMMovement
+	connection Movement on obstacle to stm_ref0 on obstacle
+}
+
+stm SMMovement {
+	uses ObstacleI requires MovementI requires I_normal_SMMovement_Moving_entry const lvel : real , avel : real
+	const PI : real
+	initial i0
+	state Moving {
+		entry normal_SMMovement_Moving_entry ( )
+	}
+	state Turning {
+		entry move ( 0 , avel )
+	}
+	transition t0 {
+		from i0
+		to Moving
+	}
+	transition t1 {
+		from Moving
+		to Turning
+		trigger obstacle
+		# turnTimer
+	}
+	transition t2 {
+		from Turning
+		to Moving
+		condition since ( turnTimer ) >= PI / avel
+	}
+	clock turnTimer
+}
+
+operation normal_SMMovement_Moving_entry ( ) {
+	requires req_normal_SMMovement_Moving_entry requires IwaitOp initial i
+	final f
+	junction t_j_2_2
+	transition t {
+		from i
+		to t_j_2_2
+		action move ( lvel , 0 )
+	}
+	transition t_t_2_2 {
+		from t_j_2_2
+		to f
+		action waitOp ( 1 )
+	}
+}
+
+operation tStop ( ) {
+	state sStop {
+	}
+	initial i
+	transition t {
+		from i
+		to sStop
+	}
+}
+
+operation deadlineCheck ( d : nat
+) {
+	requires ItStop final f
+	initial i
+	transition t {
+		from i
+		to f
+		action tStop ( ) <{ d }
+	}
+}
+
+operation waitOp ( i : nat
+) {
+	state Waiting {
+		state SEnd {
+		}
+		initial i
+		transition t {
+			from i
+			to SEnd
+		}
+	}
+	final f
+	initial i0
+	transition t2 {
+		from Waiting
+		to f
+		condition since ( C ) == i
+	}
+	transition t {
+		from i0
+		to Waiting
+		action # C
+	}
+	clock C
+}
+
+operation waitInterval ( m : nat
+, n : nat
+) {
+	requires IwaitOp final f
+	junction j
+	initial i
+	transition trF {
+		from j
+		to f
+		condition since ( C ) >= m
+	}
+	transition trSelf {
+		from j
+		to j
+		condition since ( C ) < n
+		action waitOp ( 1 )
+	}
+	transition trI {
+		from i
+		to j
+		action # C
+	}
+	clock C
+}
+
+module marXbotSoftware {
+	connection marXbotServices on obstacle to ctrl_ref0 on obstacle ( _async )
+	robotic platform marXbotServices {
+		uses ObstacleI provides MovementI }
+
+	cref ctrl_ref0 = Movement
+}
 
