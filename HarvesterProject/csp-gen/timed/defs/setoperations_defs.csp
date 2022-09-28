@@ -1,0 +1,13 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 28-09-2022 19:16:28
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+-- data definitions used by platform:/resource/HarvesterProject/set-operations.rct
+
+pre_setoperations_choose(param_s) =  (param_s!={})
+	

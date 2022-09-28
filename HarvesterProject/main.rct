@@ -1,0 +1,289 @@
+package main
+
+import set_toolkit::* import setoperations::* 
+interface ArmOperations {
+	hideArm ( )
+goHome ( )
+move ( jp : JointsPos )
+	grasp ( jp : JointsPos )
+	pick ( )
+	drop ( jp : JointsPos )
+}
+
+interface Camera {
+	event takePic : Image
+}
+
+interface GlobalVariables {
+	var apples : Set( Coord3D )
+	var 
+
+positions : Coord3D -> JointsPos * JointsPos * JointsPos
+}
+
+interface SolverControl {
+	event startIKSolver
+
+	event endIKSolver
+
+}
+
+type Image interface GoHomeControl {
+	event startGoHome
+	event endGoHome
+}
+
+type JointsPos interface LookUpTable {
+	var positions : Coord3D -> JointsPos * JointsPos * JointsPos
+	var nextApple : Coord3D
+}
+
+interface TravellingSalesman {
+	NearestNeighbour ( )
+}
+
+interface TimeConstants {
+	const hideTime : nat
+	const approachTime : nat
+	const graspTime : nat
+	const dropTime : nat
+	const pickTime : nat
+
+	const pickDeadl : nat
+}
+
+interface Locations {
+	const homePos : Coord3D
+	const storagePos : Coord3D
+}
+
+interface AppleCoordinates {
+	var apples : Set( Coord3D )
+}
+
+interface Vision {
+	CHTBA ( img : Image )
+}
+
+controller ControlArm {
+	uses GlobalVariables uses Camera requires ArmOperations opref op_ref0 = CHTBA
+	opref op_ref1 = NearestNeighbour
+	sref stm_ref0 = AppleHarvestControl
+	sref stm_ref1 = IKSolver
+	sref stm_ref2 = GoHome
+	connection ControlArm on takePic to stm_ref0 on takePic
+	connection stm_ref0 on startIKSolver to stm_ref1 on startIKSolver
+	connection stm_ref1 on endIKSolver to stm_ref0 on endIKSolver
+	connection stm_ref0 on startGoHome to stm_ref2 on startGoHome
+	connection stm_ref2 on endGoHome to stm_ref0 on endGoHome
+} stm AppleHarvestControl {
+	uses Camera uses SolverControl requires ArmOperations requires GlobalVariables requires TravellingSalesman var img : Image
+	var localized : boolean
+	initial i0
+	state Prepare {
+		entry hideArm ( ) ; wait ( [ 0 , hideTime ] )
+	}
+	state LocalizeFruit {
+		initial i0
+		state Start {
+		}
+		state Solving {
+		}
+		state SolvingAndMoving {
+		}
+		state Solved {
+		}
+		state Moved {
+		}
+		final f0
+		state Done {
+		}
+		transition t0 {
+			from i0
+			to Start
+		}
+		transition t1 {
+			from Start
+			to Solving
+			action startIKSolver <{ 0 }
+		}
+		transition t2 {
+			from Solving
+			to SolvingAndMoving
+			action startGoHome <{ 0 }
+		}
+		transition t3 {
+			from SolvingAndMoving
+			to Solved
+			trigger endIKSolver
+		}
+		transition t4 {
+			from SolvingAndMoving
+			to Moved
+			trigger endGoHome
+		}
+		transition t5 {
+			from Moved
+			to Done
+			trigger endIKSolver
+		}
+		transition t6 {
+			from Solved
+			to Done
+			trigger endGoHome
+		}
+		transition t7 {
+			from Done
+			to f0
+			action localized = true
+		}
+		entry CHTBA ( img ) ; localized = false
+	}
+	transition t0 {
+		from i0
+		to Prepare
+	}
+	transition t1 {
+		from Prepare
+		to LocalizeFruit
+		trigger takePic ? img
+		<{ 0
+	}
+	}
+uses GoHomeControl 
+var nextApple : Coord3D
+	uses TimeConstants uses Locations state Next {
+		entry NearestNeighbour ( )
+	}
+	state GetApple {
+		entry ( move ( positions ( nextApple ) [ 1 ] ) ; wait ( [ 0 , approachTime ] ) ; grasp ( positions ( nextApple ) [ 2 ] ) ; wait ( [ 0 , graspTime ] ) ; pick ( ) ; wait ( [ 0 , pickTime ] ) ; drop ( positions ( nextApple ) [ 3 ] ) ; wait ( [ 0 , dropTime ] ) ) <{ pickDeadl }
+		exit positions = fdiff ( nextApple , positions )
+	}
+	junction j0
+	state GoingHome {
+	}
+	transition t2 {
+		from LocalizeFruit
+		to Next
+		condition localized
+	}
+	transition t3 {
+		from Next
+		to Next
+		condition not reachable ( nextApple )
+	}
+	transition t4 {
+		from Next
+		to GetApple
+		condition reachable ( nextApple )
+	}
+	transition t5 {
+		from GetApple
+		to j0
+	}
+	transition t6 {
+		from j0
+		to Next
+		condition not isEmpty ( positions )
+	}
+	transition t7 {
+		from j0
+		to GoingHome
+		condition isEmpty ( positions )
+		action startGoHome
+	}
+	transition t8 {
+		from GoingHome
+		to Next
+		trigger endGoHome
+	}
+requires Vision }
+
+stm IKSolver {
+	requires GlobalVariables initial i0
+	state Ready {
+	}
+	state Loop {
+	}
+	transition t0 {
+		from i0
+		to Ready
+	}
+	transition t1 {
+		from Ready
+		to Loop
+		trigger startIKSolver
+	}
+	uses SolverControl var apple : Coord3D
+	var p1 : JointsPos
+	var p2 : JointsPos
+	var p3 : JointsPos
+	state Solve {
+		entry p1 = jointApproach ( apple ) ; p2 = jointFruit ( apple ) ; p3 = jointStorage ( apple )
+		exit apples = diff ( apples , { apple } )
+	}
+	transition t2 {
+		from Loop
+		to Solve
+		condition apples != { }
+		action apple = choose ( apples )
+	}
+	transition t4 {
+		from Loop
+		to Ready
+		condition apples == { }
+		action endIKSolver
+	}
+	transition t3 {
+		from Solve
+		to Loop
+		action 
+	if  ( jointInLimit ( p1 ) \/ jointInLimit ( p2 ) \/ jointInLimit ( p3 ) ) then positions = addApple ( positions , apple , p1 , p2 , p3 ) else skip end
+	}
+}
+
+operation CHTBA ( 
+img : Image
+) {
+	requires AppleCoordinates }
+
+stm GoHome {
+	uses GoHomeControl requires ArmOperations const goHTime : nat
+	initial i0
+	state Ready {
+	}
+	state Going {
+		entry goHome ( ) ; wait ( goHTime )
+	}
+	transition t0 {
+		from i0
+		to Ready
+	}
+	transition t1 {
+		from Ready
+		to Going
+		trigger startGoHome
+	}
+	transition t2 {
+		from Going
+		to Ready
+		action endGoHome
+	}
+}
+
+operation NearestNeighbour ( ) {
+	requires LookUpTable }
+
+function jointApproach ( apple : Coord3D ) : JointsPos { } 
+function jointFruit ( apple : Coord3D ) : JointsPos { } 
+function jointStorage ( apple : Coord3D ) : JointsPos { } 
+function jointInLimit ( position : JointsPos ) : boolean { } function reachable ( apple : Coord3D ) : boolean { } function fdiff ( apple : Coord3D , lut : Coord3D -> JointsPos * JointsPos * JointsPos ) : Coord3D -> JointsPos * JointsPos * JointsPos { } function isEmpty ( lut : Coord3D -> JointsPos * JointsPos * JointsPos ) : boolean { } 
+module Harvester {
+	connection Arm on takePic to ctrl_ref0 on takePic ( _async )
+	cref ctrl_ref0 = ControlArm
+	robotic platform Arm {
+		uses Camera provides ArmOperations }
+
+}
+
+function addApple ( ps : Coord3D -> JointsPos * JointsPos * JointsPos , a : Coord3D , j1 : JointsPos , j2 : JointsPos , j3 : JointsPos ) : Coord3D -> JointsPos * JointsPos * JointsPos { }

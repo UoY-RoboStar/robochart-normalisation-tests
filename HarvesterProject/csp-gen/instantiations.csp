@@ -1,0 +1,255 @@
+-- generate const_main_AppleHarvestControl_storagePos
+const_main_AppleHarvestControl_storagePos = 0
+
+-- generate main_fdiff
+main_fdiff(apple,lut) = 0
+
+-- generate const_pkg464_main_AppleHarvestControl_pickDeadl
+const_pkg464_main_AppleHarvestControl_pickDeadl = 0
+
+-- generate const_main_ControlArm_stm_ref0_pickTime
+const_main_ControlArm_stm_ref0_pickTime = 0
+
+-- generate const_main_AppleHarvestControl_pickDeadl
+const_main_AppleHarvestControl_pickDeadl = 0
+
+-- generate const_main_ControlArm_stm_ref0_dropTime
+const_main_ControlArm_stm_ref0_dropTime = 0
+
+-- generate const_pkg464_main_AppleHarvestControl_pickTime
+const_pkg464_main_AppleHarvestControl_pickTime = 0
+
+-- generate const_main_ControlArm_stm_ref2_goHTime
+const_main_ControlArm_stm_ref2_goHTime = 0
+
+-- generate const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_graspTime
+const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_graspTime = 0
+
+-- generate Image
+nametype main_Image = {0,1}
+
+-- generate const_main_AppleHarvestControl_graspTime
+const_main_AppleHarvestControl_graspTime = 0
+
+-- generate const_main_AppleHarvestControl_hideTime
+const_main_AppleHarvestControl_hideTime = 0
+
+-- generate const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_pickTime
+const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_pickTime = 0
+
+-- generate const_main_ControlArm_stm_ref0_approachTime
+const_main_ControlArm_stm_ref0_approachTime = 0
+
+-- generate const_pkg464_main_AppleHarvestControl_graspTime
+const_pkg464_main_AppleHarvestControl_graspTime = 0
+
+-- generate const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_graspTime
+const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_graspTime = 0
+
+-- generate const_main_AppleHarvestControl_approachTime
+const_main_AppleHarvestControl_approachTime = 0
+
+-- generate const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_pickTime
+const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_pickTime = 0
+
+-- generate Plus
+Plus(e1,e2,T) = if member(e1+e2,T) then e1+e2 else e1
+
+-- generate const_pkg464_main_AppleHarvestControl_dropTime
+const_pkg464_main_AppleHarvestControl_dropTime = 0
+
+-- generate const_pkg464_main_normal_GoHome_Going_entry_goHTime
+const_pkg464_main_normal_GoHome_Going_entry_goHTime = 0
+
+-- generate main_reachable
+main_reachable(apple) = true
+
+-- generate --
+
+-- MODULE CONSTANTS
+
+-- CONTROLLER CONSTANTS
+
+-- STATEMACHINE CONSTANTS
+
+-- generate nat
+nametype core_nat = union({0..2},{calc_type_min(Union(
+			{{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{goHTime|goHTime <- {0..2}},{hideTime|hideTime <- {0..2}},{d|d <- {0..2}},{pickDeadl|pickDeadl <- {0..2}},{0},{0},{0},{approachTime|approachTime <- {0..2}},{pickTime|pickTime <- {0..2}},{0},{d|d <- {0..2}},{1},{0},{0},{d|d <- {0..2}},{graspTime|graspTime <- {0..2}},{0},{dropTime|dropTime <- {0..2}}}))..calc_type_max(Union({{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{goHTime|goHTime <- {0..2}},{hideTime|hideTime <- {0..2}},{d|d <- {0..2}},{pickDeadl|pickDeadl <- {0..2}},{0},{0},{0},{approachTime|approachTime <- {0..2}},{pickTime|pickTime <- {0..2}},{0},{d|d <- {0..2}},{1},{0},{0},{d|d <- {0..2}},{graspTime|graspTime <- {0..2}},{0},{dropTime|dropTime <- {0..2}}}))})
+
+-- generate core_clock_type
+nametype core_clock_type = {0..10}
+
+-- BASIC FUNCTIONS
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_approachTime
+const_pkg464_main_ControlArm_stm_ref0_approachTime = 0
+
+-- generate const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_dropTime
+const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_dropTime = 0
+
+-- generate real
+nametype core_real = union({ -2..2},{calc_type_min(Union(
+			{{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{goHTime|goHTime <- {0..2}},{hideTime|hideTime <- {0..2}},{d|d <- {0..2}},{pickDeadl|pickDeadl <- {0..2}},{0},{0},{0},{approachTime|approachTime <- {0..2}},{pickTime|pickTime <- {0..2}},{0},{d|d <- {0..2}},{1},{0},{0},{d|d <- {0..2}},{graspTime|graspTime <- {0..2}},{0},{dropTime|dropTime <- {0..2}}}))..calc_type_max(Union({{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{goHTime|goHTime <- {0..2}},{hideTime|hideTime <- {0..2}},{d|d <- {0..2}},{pickDeadl|pickDeadl <- {0..2}},{0},{0},{0},{approachTime|approachTime <- {0..2}},{pickTime|pickTime <- {0..2}},{0},{d|d <- {0..2}},{1},{0},{0},{d|d <- {0..2}},{graspTime|graspTime <- {0..2}},{0},{dropTime|dropTime <- {0..2}}}))}) 
+
+-- VECTOR TYPES AND OPERATIONS
+
+
+-- CLOCKS
+
+-- generate const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_approachTime
+const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_approachTime = 0
+
+-- generate const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_dropTime
+const_pkg464_main_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_dropTime = 0
+
+-- BASIC TYPES
+
+-- generate main_isEmpty
+main_isEmpty(lut) = true
+
+-- generate Modulus
+Modulus(e1,e2,T) = if member(e1%e2,T) then e1%e2 else e1
+
+-- generate main_jointFruit
+main_jointFruit(apple) = 0
+
+-- generate const_pkg464_main_AppleHarvestControl_hideTime
+const_pkg464_main_AppleHarvestControl_hideTime = 0
+
+-- generate Minus
+Minus(e1,e2,T) = if member(e1-e2,T) then e1-e2 else e1
+
+-- generate const_pkg464_main_normal_AppleHarvestControl_Prepare_entry_hideTime
+const_pkg464_main_normal_AppleHarvestControl_Prepare_entry_hideTime = 0
+
+-- generate string
+nametype core_string = LSeq(Char,2)
+
+-- generate main_jointApproach
+main_jointApproach(apple) = 0
+
+-- generate const_main_ControlArm_stm_ref0_pickDeadl
+const_main_ControlArm_stm_ref0_pickDeadl = 0
+
+-- generate const_main_ControlArm_stm_ref0_graspTime
+const_main_ControlArm_stm_ref0_graspTime = 0
+
+-- generate const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_dropTime
+const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_dropTime = 0
+
+-- generate -- OPERATION BOUNDS
+
+-- MODULE CONSTANTS
+
+-- CONTROLLER CONSTANTS
+
+-- STATEMACHINE CONSTANTS
+
+-- generate const_pkg464_main_GoHome_goHTime
+const_pkg464_main_GoHome_goHTime = 0
+
+-- generate const_pkg464_main_AppleHarvestControl_storagePos
+const_pkg464_main_AppleHarvestControl_storagePos = 0
+
+-- generate setoperations_choose
+setoperations_choose(s) = 0
+
+-- generate const_pkg464_main_AppleHarvestControl_approachTime
+const_pkg464_main_AppleHarvestControl_approachTime = 0
+
+-- generate const_main_GoHome_goHTime
+const_main_GoHome_goHTime = 0
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_graspTime
+const_pkg464_main_ControlArm_stm_ref0_graspTime = 0
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_pickDeadl
+const_pkg464_main_ControlArm_stm_ref0_pickDeadl = 0
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_hideTime
+const_pkg464_main_ControlArm_stm_ref0_hideTime = 0
+
+-- generate const_main_ControlArm_stm_ref0_storagePos
+const_main_ControlArm_stm_ref0_storagePos = 0
+
+-- generate const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_pickDeadl
+const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_pickDeadl = 0
+
+-- generate const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_approachTime
+const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_approachTime = 0
+
+-- generate main_jointStorage
+main_jointStorage(apple) = 0
+
+-- generate const_pkg464_main_AppleHarvestControl_homePos
+const_pkg464_main_AppleHarvestControl_homePos = 0
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_pickTime
+const_pkg464_main_ControlArm_stm_ref0_pickTime = 0
+
+-- generate const_main_AppleHarvestControl_homePos
+const_main_AppleHarvestControl_homePos = 0
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_homePos
+const_pkg464_main_ControlArm_stm_ref0_homePos = 0
+
+-- generate const_main_AppleHarvestControl_pickTime
+const_main_AppleHarvestControl_pickTime = 0
+
+-- generate JointsPos
+nametype main_JointsPos = {0,1}
+
+-- generate int
+nametype core_int = union({ -2..2},{calc_type_min(Union(
+			{{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{goHTime|goHTime <- {0..2}},{hideTime|hideTime <- {0..2}},{d|d <- {0..2}},{pickDeadl|pickDeadl <- {0..2}},{0},{0},{0},{approachTime|approachTime <- {0..2}},{pickTime|pickTime <- {0..2}},{0},{d|d <- {0..2}},{1},{0},{0},{d|d <- {0..2}},{graspTime|graspTime <- {0..2}},{0},{dropTime|dropTime <- {0..2}}}))..calc_type_max(Union({{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{goHTime|goHTime <- {0..2}},{hideTime|hideTime <- {0..2}},{d|d <- {0..2}},{pickDeadl|pickDeadl <- {0..2}},{0},{0},{0},{approachTime|approachTime <- {0..2}},{pickTime|pickTime <- {0..2}},{0},{d|d <- {0..2}},{1},{0},{0},{d|d <- {0..2}},{graspTime|graspTime <- {0..2}},{0},{dropTime|dropTime <- {0..2}}}))})
+
+-- generate Div
+Div(e1,e2,T) = if member(e1/e2,T) then e1/e2 else e1
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_storagePos
+const_pkg464_main_ControlArm_stm_ref0_storagePos = 0
+
+-- generate const_pkg464_main_ControlArm_stm_ref2_goHTime
+const_pkg464_main_ControlArm_stm_ref2_goHTime = 0
+
+-- OPERATION CONSTANTS
+
+-- generate Neg
+Neg(e1,T) = if member(-e1,T) then -e1 else e1
+
+-- generate const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_pickTime
+const_pkg464_main_normal_AppleHarvestControl_GetApple_entry_pickTime = 0
+
+-- generate boolean
+nametype core_boolean = Bool
+
+-- generate const_main_ControlArm_stm_ref0_hideTime
+const_main_ControlArm_stm_ref0_hideTime = 0
+
+-- generate Mult
+Mult(e1,e2,T) = if member(e1*e2,T) then e1*e2 else e1
+
+-- generate main_jointInLimit
+main_jointInLimit(position) = true
+
+-- generate const_main_ControlArm_stm_ref0_homePos
+const_main_ControlArm_stm_ref0_homePos = 0
+
+-- generate const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_graspTime
+const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_graspTime = 0
+
+-- generate main_addApple
+main_addApple(ps,a,j1,j2,j3) = 0
+
+-- generate const_main_AppleHarvestControl_dropTime
+const_main_AppleHarvestControl_dropTime = 0
+
+-- generate const_pkg464_main_ControlArm_stm_ref0_dropTime
+const_pkg464_main_ControlArm_stm_ref0_dropTime = 0
+
+-- generate Coord3D
+nametype setoperations_Coord3D = {0,1}
+
+-- generate const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_approachTime
+const_pkg464_main_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_approachTime = 0
+

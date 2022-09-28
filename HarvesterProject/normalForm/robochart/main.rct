@@ -1,0 +1,1262 @@
+package pkg464_main import main::jointFruit import set_toolkit::diff import main::fdiff import main::reachable import setoperations::choose import main::addApple import main::jointInLimit import main::isEmpty import main::jointApproach import main::jointStorage interface ArmOperations {
+	hideArm ( )
+	goHome ( )
+	move ( jp : main::JointsPos )
+	grasp ( jp : main::JointsPos )
+	pick ( )
+	drop ( jp : main::JointsPos )
+}
+
+interface Camera {
+	event takePic : main::Image
+}
+
+interface GlobalVariables {
+	var apples : Set( setoperations::Coord3D )
+	var positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos
+}
+
+interface SolverControl {
+	event startIKSolver
+	event endIKSolver
+}
+
+interface GoHomeControl {
+	event startGoHome
+	event endGoHome
+}
+
+interface LookUpTable {
+	var positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos
+	var nextApple : setoperations::Coord3D
+}
+
+interface TravellingSalesman {
+	NearestNeighbour ( )
+}
+
+interface TimeConstants {
+	const hideTime : nat
+	const approachTime : nat
+	const graspTime : nat
+	const dropTime : nat
+	const pickTime : nat
+	const pickDeadl : nat
+}
+
+interface Locations {
+	const homePos : setoperations::Coord3D
+	const storagePos : setoperations::Coord3D
+}
+
+interface AppleCoordinates {
+	var apples : Set( setoperations::Coord3D )
+}
+
+interface Vision {
+	CHTBA ( img : main::Image )
+}
+
+interface req_normal_IKSolver_Solve_exit {
+	var apples : Set( setoperations::Coord3D ) , apple : setoperations::Coord3D
+}
+
+interface I_normal_IKSolver_Solve_exit {
+	normal_IKSolver_Solve_exit ( )
+}
+
+interface req_normal_GoHome_Going_entry {
+	goHome ( )
+	const goHTime : nat
+}
+
+interface I_normal_GoHome_Going_entry {
+	normal_GoHome_Going_entry ( )
+}
+
+interface req_normal_IKSolver_Loop_t2_op {
+	var apples : Set( setoperations::Coord3D ) , apple : setoperations::Coord3D
+}
+
+interface I_normal_IKSolver_Loop_t2_op {
+	normal_IKSolver_Loop_t2_op ( )
+}
+
+interface defEvents_normal_AppleHarvestControl_j0_t7_op {
+	event startGoHome
+}
+
+interface I_normal_AppleHarvestControl_j0_t7_op {
+	normal_AppleHarvestControl_j0_t7_op ( )
+}
+
+interface req_normal_IKSolver_Solve_entry {
+	var p1 : main::JointsPos , p3 : main::JointsPos , p2 : main::JointsPos , apple : setoperations::Coord3D
+}
+
+interface I_normal_IKSolver_Solve_entry {
+	normal_IKSolver_Solve_entry ( )
+}
+
+interface req_normal_AppleHarvestControl_Prepare_entry {
+	hideArm ( )
+	const hideTime : nat
+}
+
+interface I_normal_AppleHarvestControl_Prepare_entry {
+	normal_AppleHarvestControl_Prepare_entry ( )
+}
+
+interface defEvents_normal_GoHome_Going_t2_op {
+	event endGoHome
+}
+
+interface I_normal_GoHome_Going_t2_op {
+	normal_GoHome_Going_t2_op ( )
+}
+
+interface defEvents_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op {
+	event startGoHome
+}
+
+interface I_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op {
+	normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op ( )
+}
+
+interface req_normal_AppleHarvestControl_GetApple_entry {
+	pick ( )
+	grasp ( jp : main::JointsPos )
+	drop ( jp : main::JointsPos )
+	move ( jp : main::JointsPos )
+	const approachTime : nat , dropTime : nat , pickTime : nat , graspTime : nat , pickDeadl : nat
+	var nextApple : setoperations::Coord3D , positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos
+}
+
+interface I_normal_AppleHarvestControl_GetApple_entry {
+	normal_AppleHarvestControl_GetApple_entry ( )
+}
+
+interface req_normal_AppleHarvestControl_LocalizeFruit_entry {
+	CHTBA ( img : main::Image )
+	var localized : boolean , img : main::Image
+	var apples : Set( setoperations::Coord3D )
+}
+
+interface I_normal_AppleHarvestControl_LocalizeFruit_entry {
+	normal_AppleHarvestControl_LocalizeFruit_entry ( )
+}
+
+interface defEvents_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op {
+	event startIKSolver
+}
+
+interface I_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op {
+	normal_AppleHarvestControl_LocalizeFruit_Start_t1_op ( )
+}
+
+interface req_normal_AppleHarvestControl_GetApple_exit {
+	var nextApple : setoperations::Coord3D , positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos
+}
+
+interface I_normal_AppleHarvestControl_GetApple_exit {
+	normal_AppleHarvestControl_GetApple_exit ( )
+}
+
+interface req_normal_AppleHarvestControl_LocalizeFruit_Done_t7_op {
+	var localized : boolean
+}
+
+interface I_normal_AppleHarvestControl_LocalizeFruit_Done_t7_op {
+	normal_AppleHarvestControl_LocalizeFruit_Done_t7_op ( )
+}
+
+interface defEvents_normal_IKSolver_Loop_t4_op {
+	event endIKSolver
+}
+
+interface I_normal_IKSolver_Loop_t4_op {
+	normal_IKSolver_Loop_t4_op ( )
+}
+
+interface req_normal_IKSolver_Solve_t3_op {
+	var p1 : main::JointsPos , p3 : main::JointsPos , positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos , p2 : main::JointsPos , apple : setoperations::Coord3D
+}
+
+interface I_normal_IKSolver_Solve_t3_op {
+	normal_IKSolver_Solve_t3_op ( )
+}
+
+interface ItStop {
+	tStop ( )
+}
+
+interface IdeadlineCheck {
+	deadlineCheck ( d : nat )
+}
+
+interface I_normal_AppleHarvestControl_Prepare_t1_dop {
+	normal_AppleHarvestControl_Prepare_t1_dop ( )
+}
+
+interface IwaitOp {
+	waitOp ( i : nat )
+}
+
+interface IwaitInterval {
+	waitInterval ( m : nat , n : nat )
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t {
+	normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t ( )
+}
+
+interface I_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t {
+	deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t ( d : nat )
+}
+
+interface req_normal_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_S0_t {
+	var g : boolean = false
+}
+
+interface defEvents_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t {
+	event startGoHome
+}
+
+interface defEvents_normal_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_S0_t {
+	event startGoHome
+}
+
+interface I_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t {
+	deadlineAction_normal_AppleHarvestControl_GetApple_entry_t ( d : nat )
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t {
+	normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t ( )
+}
+
+interface req_normal_AppleHarvestControl_GetApple_entry_t {
+	grasp ( jp : main::JointsPos )
+	drop ( jp : main::JointsPos )
+	pick ( )
+	move ( jp : main::JointsPos )
+	var positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos , nextApple : setoperations::Coord3D
+	const graspTime : nat , approachTime : nat , dropTime : nat , pickTime : nat
+}
+
+interface req_normal_normal_AppleHarvestControl_GetApple_entry_S0_t {
+	pick ( )
+	drop ( jp : main::JointsPos )
+	move ( jp : main::JointsPos )
+	grasp ( jp : main::JointsPos )
+	var nextApple : setoperations::Coord3D , positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos
+	const approachTime : nat , graspTime : nat , pickTime : nat , dropTime : nat
+	var g : boolean = false
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t {
+	normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t ( )
+}
+
+interface I_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t {
+	deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t ( d : nat )
+}
+
+interface req_normal_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_S0_t {
+	var g : boolean = false
+}
+
+interface defEvents_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t {
+	event startIKSolver
+}
+
+interface defEvents_normal_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_S0_t {
+	event startIKSolver
+}
+
+interface I_normal_IKSolver_Solve_t3_op_t_elseJ__t_elseTA__op {
+	normal_IKSolver_Solve_t3_op_t_elseJ__t_elseTA__op ( )
+}
+
+interface defEvents_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t {
+	event startIKSolver
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t_op {
+	normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t_op ( )
+}
+
+interface defEvents_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t {
+	event startGoHome
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t_op {
+	normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t_op ( )
+}
+
+interface req_normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8 {
+	var apple : setoperations::Coord3D , p3 : main::JointsPos
+}
+
+interface I_normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8_op {
+	normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8_op ( )
+}
+
+interface req_normal_IKSolver_Solve_entry_i_t {
+	var p1 : main::JointsPos , apple : setoperations::Coord3D
+}
+
+interface I_normal_IKSolver_Solve_entry_i_t_op {
+	normal_IKSolver_Solve_entry_i_t_op ( )
+}
+
+interface req_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6 {
+	var g : boolean = false
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6_op {
+	normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6_op ( )
+}
+
+interface req_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9 {
+	var g : boolean = false
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9_op {
+	normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9_op ( )
+}
+
+interface req_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7 {
+	var g : boolean = false
+}
+
+interface I_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7_op {
+	normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7_op ( )
+}
+
+interface req_normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5 {
+	var localized : boolean
+}
+
+interface I_normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5_op {
+	normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5_op ( )
+}
+
+interface req_normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4 {
+	var apple : setoperations::Coord3D , p2 : main::JointsPos
+}
+
+interface I_normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4_op {
+	normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4_op ( )
+}
+
+interface req_normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA_ {
+	var positions : setoperations::Coord3D -> main::JointsPos * main::JointsPos * main::JointsPos , p1 : main::JointsPos , p3 : main::JointsPos , p2 : main::JointsPos , apple : setoperations::Coord3D
+}
+
+interface I_normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA__op {
+	normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA__op ( )
+}
+
+controller ControlArm {
+	uses GlobalVariables uses Camera requires ArmOperations opref op_ref0 = CHTBA
+	opref op_ref1 = NearestNeighbour
+	opref ControlArm_ref_normal_IKSolver_Solve_exit = normal_IKSolver_Solve_exit
+	opref ControlArm_ref_normal_GoHome_Going_entry = normal_GoHome_Going_entry
+	opref ControlArm_ref_normal_IKSolver_Loop_t2_op = normal_IKSolver_Loop_t2_op
+	opref ControlArm_ref_normal_AppleHarvestControl_j0_t7_op = normal_AppleHarvestControl_j0_t7_op
+	opref ControlArm_ref_normal_IKSolver_Solve_entry = normal_IKSolver_Solve_entry
+	opref ControlArm_ref_normal_AppleHarvestControl_Prepare_entry = normal_AppleHarvestControl_Prepare_entry
+	opref ControlArm_ref_normal_GoHome_Going_t2_op = normal_GoHome_Going_t2_op
+	opref ControlArm_ref_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op = normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op
+	opref ControlArm_ref_normal_AppleHarvestControl_GetApple_entry = normal_AppleHarvestControl_GetApple_entry
+	opref ControlArm_ref_normal_AppleHarvestControl_LocalizeFruit_entry = normal_AppleHarvestControl_LocalizeFruit_entry
+	opref ControlArm_ref_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op = normal_AppleHarvestControl_LocalizeFruit_Start_t1_op
+	opref ControlArm_ref_normal_AppleHarvestControl_GetApple_exit = normal_AppleHarvestControl_GetApple_exit
+	opref ControlArm_ref_normal_AppleHarvestControl_LocalizeFruit_Done_t7_op = normal_AppleHarvestControl_LocalizeFruit_Done_t7_op
+	opref ControlArm_ref_normal_IKSolver_Loop_t4_op = normal_IKSolver_Loop_t4_op
+	opref ControlArm_ref_normal_IKSolver_Solve_t3_op = normal_IKSolver_Solve_t3_op
+	opref ControlArm_ref_tStop = tStop
+	opref ControlArm_ref_deadlineCheck = deadlineCheck
+	opref ControlArm_ref_normal_AppleHarvestControl_Prepare_t1_dop = normal_AppleHarvestControl_Prepare_t1_dop
+	opref ControlArm_ref_waitOp = waitOp
+	opref ControlArm_ref_waitInterval = waitInterval
+	opref ControlArm_ref_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t = deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t = normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t
+	opref ControlArm_ref_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t = deadlineAction_normal_AppleHarvestControl_GetApple_entry_t
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t = normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t
+	opref ControlArm_ref_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t = deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t = normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t
+	opref ControlArm_ref_normal_IKSolver_Solve_t3_op_t_elseJ__t_elseTA__op = normal_IKSolver_Solve_t3_op_t_elseJ__t_elseTA__op
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t_op = normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t_op
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t_op = normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t_op
+	opref ControlArm_ref_normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8_op = normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8_op
+	opref ControlArm_ref_normal_IKSolver_Solve_entry_i_t_op = normal_IKSolver_Solve_entry_i_t_op
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6_op = normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6_op
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9_op = normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9_op
+	opref ControlArm_ref_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7_op = normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7_op
+	opref ControlArm_ref_normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5_op = normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5_op
+	opref ControlArm_ref_normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4_op = normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4_op
+	opref ControlArm_ref_normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA__op = normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA__op
+	sref stm_ref0 = AppleHarvestControl
+	sref stm_ref1 = IKSolver
+	sref stm_ref2 = GoHome
+	connection ControlArm on takePic to stm_ref0 on takePic
+	connection stm_ref0 on startIKSolver to stm_ref1 on startIKSolver
+	connection stm_ref1 on endIKSolver to stm_ref0 on endIKSolver
+	connection stm_ref0 on startGoHome to stm_ref2 on startGoHome
+	connection stm_ref2 on endGoHome to stm_ref0 on endGoHome
+}
+
+stm AppleHarvestControl {
+	uses Camera uses SolverControl uses GoHomeControl uses TimeConstants uses Locations requires ArmOperations requires GlobalVariables requires TravellingSalesman requires Vision requires I_normal_AppleHarvestControl_j0_t7_op requires I_normal_AppleHarvestControl_Prepare_entry requires I_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op requires I_normal_AppleHarvestControl_GetApple_entry requires I_normal_AppleHarvestControl_LocalizeFruit_entry requires I_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op requires I_normal_AppleHarvestControl_GetApple_exit requires I_normal_AppleHarvestControl_LocalizeFruit_Done_t7_op requires I_normal_AppleHarvestControl_Prepare_t1_dop var img : main::Image
+	var localized : boolean
+	var nextApple : setoperations::Coord3D
+	initial i0
+	state Prepare {
+		initial i
+		state SEnd {
+		}
+		transition tPrepare {
+			from i
+			to SEnd
+		}
+		entry normal_AppleHarvestControl_Prepare_entry ( )
+		during normal_AppleHarvestControl_Prepare_t1_dop ( )
+	}
+	state LocalizeFruit {
+		initial i0
+		state Start {
+		}
+		state Solving {
+		}
+		state SolvingAndMoving {
+		}
+		state Solved {
+		}
+		state Moved {
+			state SEnd {
+			}
+			initial i
+			transition tMoved {
+				from i
+				to SEnd
+			}
+		}
+		state Done {
+		}
+		state SEnd {
+		}
+		transition t0 {
+			from i0
+			to Start
+		}
+		transition t1 {
+			from Start
+			to Solving
+			action normal_AppleHarvestControl_LocalizeFruit_Start_t1_op ( )
+		}
+		transition t2 {
+			from Solving
+			to SolvingAndMoving
+			action normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op ( )
+		}
+		transition t3 {
+			from SolvingAndMoving
+			to Solved
+			trigger endIKSolver
+		}
+		transition t4 {
+			from SolvingAndMoving
+			to Moved
+			trigger endGoHome
+		}
+		transition t5 {
+			from Moved
+			to Done
+			trigger endIKSolver
+		}
+		transition t6 {
+			from Solved
+			to Done
+			trigger endGoHome
+		}
+		transition tEndLocalizeFruit {
+			from Done
+			to SEnd
+			action normal_AppleHarvestControl_LocalizeFruit_Done_t7_op ( )
+		}
+		entry normal_AppleHarvestControl_LocalizeFruit_entry ( )
+	}
+	state Next {
+		state SEnd {
+		}
+		initial i
+		transition tNext {
+			from i
+			to SEnd
+		}
+		entry NearestNeighbour ( )
+	}
+	state GetApple {
+		entry normal_AppleHarvestControl_GetApple_entry ( )
+		exit normal_AppleHarvestControl_GetApple_exit ( )
+	}
+	junction j0
+	state GoingHome {
+		state SEnd {
+		}
+		initial i
+		transition tGoingHome {
+			from i
+			to SEnd
+		}
+	}
+	transition t0 {
+		from i0
+		to Prepare
+	}
+	transition t1 {
+		from Prepare
+		to LocalizeFruit
+		trigger takePic ? img
+	}
+	transition t2 {
+		from LocalizeFruit
+		to Next
+		condition localized
+	}
+	transition t3 {
+		from Next
+		to Next
+		condition not reachable ( nextApple )
+	}
+	transition t4 {
+		from Next
+		to GetApple
+		condition reachable ( nextApple )
+	}
+	transition t5 {
+		from GetApple
+		to j0
+	}
+	transition t6 {
+		from j0
+		to Next
+		condition not isEmpty ( positions )
+	}
+	transition t7 {
+		from j0
+		to GoingHome
+		condition isEmpty ( positions )
+		action normal_AppleHarvestControl_j0_t7_op ( )
+	}
+	transition t8 {
+		from GoingHome
+		to Next
+		trigger endGoHome
+	}
+}
+
+stm IKSolver {
+	uses SolverControl requires GlobalVariables requires I_normal_IKSolver_Solve_exit requires I_normal_IKSolver_Loop_t2_op requires I_normal_IKSolver_Solve_entry requires I_normal_IKSolver_Loop_t4_op requires I_normal_IKSolver_Solve_t3_op var apple : setoperations::Coord3D
+	var p1 : main::JointsPos
+	var p2 : main::JointsPos
+	var p3 : main::JointsPos
+	initial i0
+	state Ready {
+		state SEnd {
+		}
+		initial i
+		transition tReady {
+			from i
+			to SEnd
+		}
+	}
+	state Loop {
+		initial i
+		state SEnd {
+		}
+		transition tLoop {
+			from i
+			to SEnd
+		}
+	}
+	state Solve {
+		entry normal_IKSolver_Solve_entry ( )
+		exit normal_IKSolver_Solve_exit ( )
+	}
+	transition t0 {
+		from i0
+		to Ready
+	}
+	transition t1 {
+		from Ready
+		to Loop
+		trigger startIKSolver
+	}
+	transition t2 {
+		from Loop
+		to Solve
+		condition apples != { }
+		action normal_IKSolver_Loop_t2_op ( )
+	}
+	transition t4 {
+		from Loop
+		to Ready
+		condition apples == { }
+		action normal_IKSolver_Loop_t4_op ( )
+	}
+	transition t3 {
+		from Solve
+		to Loop
+		action normal_IKSolver_Solve_t3_op ( )
+	}
+}
+
+stm GoHome {
+	uses GoHomeControl requires ArmOperations requires I_normal_GoHome_Going_entry requires I_normal_GoHome_Going_t2_op const goHTime : nat
+	initial i0
+	state Ready {
+		initial i
+		state SEnd {
+		}
+		transition tReady {
+			from i
+			to SEnd
+		}
+	}
+	state Going {
+		entry normal_GoHome_Going_entry ( )
+	}
+	transition t0 {
+		from i0
+		to Ready
+	}
+	transition t1 {
+		from Ready
+		to Going
+		trigger startGoHome
+	}
+	transition t2 {
+		from Going
+		to Ready
+		action normal_GoHome_Going_t2_op ( )
+	}
+}
+
+operation CHTBA ( 
+img : main::Image
+) {
+	requires AppleCoordinates }
+
+operation NearestNeighbour ( ) {
+	requires LookUpTable }
+
+operation normal_IKSolver_Solve_exit ( ) {
+	requires req_normal_IKSolver_Solve_exit initial i
+	final f
+	transition t {
+		from i
+		to f
+		action apples = diff ( apples , { apple } )
+	}
+}
+
+operation normal_GoHome_Going_entry ( ) {
+	requires req_normal_GoHome_Going_entry requires IwaitOp initial i
+	final f
+	junction t_j_2_3
+	transition t {
+		from i
+		to t_j_2_3
+		action goHome ( )
+	}
+	transition t_t_2_3 {
+		from t_j_2_3
+		to f
+		action waitOp ( goHTime )
+	}
+}
+
+operation normal_IKSolver_Loop_t2_op ( ) {
+	requires req_normal_IKSolver_Loop_t2_op initial i
+	final f
+	transition t {
+		from i
+		to f
+		action apple = choose ( apples )
+	}
+}
+
+operation normal_AppleHarvestControl_j0_t7_op ( ) {
+	uses defEvents_normal_AppleHarvestControl_j0_t7_op final f
+	initial i
+	transition t {
+		from i
+		to f
+		action startGoHome
+	}
+}
+
+operation normal_IKSolver_Solve_entry ( ) {
+	requires req_normal_IKSolver_Solve_entry requires I_normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8_op requires I_normal_IKSolver_Solve_entry_i_t_op requires I_normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4_op initial i
+	final f
+	junction t_j_3_4
+	junction t_t_3_4_j_2_8
+	transition t {
+		from i
+		to t_j_3_4
+		action normal_IKSolver_Solve_entry_i_t_op ( )
+	}
+	transition t_t_3_4 {
+		from t_j_3_4
+		to t_t_3_4_j_2_8
+		action normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4_op ( )
+	}
+	transition t_t_3_4_t_2_8 {
+		from t_t_3_4_j_2_8
+		to f
+		action normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8_op ( )
+	}
+}
+
+operation normal_AppleHarvestControl_Prepare_entry ( ) {
+	requires req_normal_AppleHarvestControl_Prepare_entry requires IwaitInterval initial i
+	final f
+	junction t_j_2_2
+	transition t {
+		from i
+		to t_j_2_2
+		action hideArm ( )
+	}
+	transition t_t_2_2 {
+		from t_j_2_2
+		to f
+		action waitInterval ( 0 , hideTime )
+	}
+}
+
+operation normal_GoHome_Going_t2_op ( ) {
+	uses defEvents_normal_GoHome_Going_t2_op final f
+	initial i
+	transition t {
+		from i
+		to f
+		action endGoHome
+	}
+}
+
+operation normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op ( ) {
+	uses defEvents_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op requires I_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t final f
+	initial i
+	transition t {
+		from i
+		to f
+		action deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t ( 0 )
+	}
+}
+
+operation normal_AppleHarvestControl_GetApple_entry ( ) {
+	requires req_normal_AppleHarvestControl_GetApple_entry requires I_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t initial i
+	final f
+	transition t {
+		from i
+		to f
+		action deadlineAction_normal_AppleHarvestControl_GetApple_entry_t ( pickDeadl )
+	}
+}
+
+operation normal_AppleHarvestControl_LocalizeFruit_entry ( ) {
+	requires req_normal_AppleHarvestControl_LocalizeFruit_entry requires I_normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5_op initial i
+	final f
+	junction t_j_2_5
+	transition t {
+		from i
+		to t_j_2_5
+		action CHTBA ( img )
+	}
+	transition t_t_2_5 {
+		from t_j_2_5
+		to f
+		action normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5_op ( )
+	}
+}
+
+operation normal_AppleHarvestControl_LocalizeFruit_Start_t1_op ( ) {
+	uses defEvents_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op requires I_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t final f
+	initial i
+	transition t {
+		from i
+		to f
+		action deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t ( 0 )
+	}
+}
+
+operation normal_AppleHarvestControl_GetApple_exit ( ) {
+	requires req_normal_AppleHarvestControl_GetApple_exit initial i
+	final f
+	transition t {
+		from i
+		to f
+		action positions = fdiff ( nextApple , positions )
+	}
+}
+
+operation normal_AppleHarvestControl_LocalizeFruit_Done_t7_op ( ) {
+	requires req_normal_AppleHarvestControl_LocalizeFruit_Done_t7_op initial i
+	final f
+	transition t {
+		from i
+		to f
+		action localized = true
+	}
+}
+
+operation normal_IKSolver_Loop_t4_op ( ) {
+	uses defEvents_normal_IKSolver_Loop_t4_op initial i
+	final f
+	transition t {
+		from i
+		to f
+		action endIKSolver
+	}
+}
+
+operation normal_IKSolver_Solve_t3_op ( ) {
+	requires req_normal_IKSolver_Solve_t3_op requires I_normal_IKSolver_Solve_t3_op_t_elseJ__t_elseTA__op requires I_normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA__op initial i
+	final f
+	junction t_initialJunction_
+	junction t_thenJ_
+	junction t_elseJ_
+	transition t_initial_ {
+		from i
+		to t_initialJunction_
+	}
+	transition t_elseTG_ {
+		from t_initialJunction_
+		to t_elseJ_
+		condition not ( jointInLimit ( p1 ) \/ jointInLimit ( p2 ) \/ jointInLimit ( p3 ) )
+	}
+	transition t_thenTA_ {
+		from t_thenJ_
+		to f
+		action normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA__op ( )
+	}
+	transition t_thenTG_ {
+		from t_initialJunction_
+		to t_thenJ_
+		condition ( jointInLimit ( p1 ) \/ jointInLimit ( p2 ) \/ jointInLimit ( p3 ) )
+	}
+	transition t_elseTA_ {
+		from t_elseJ_
+		to f
+		action normal_IKSolver_Solve_t3_op_t_elseJ__t_elseTA__op ( )
+	}
+}
+
+operation tStop ( ) {
+	state sStop {
+	}
+	initial i
+	transition t {
+		from i
+		to sStop
+	}
+}
+
+operation deadlineCheck ( d : nat
+) {
+	requires ItStop final f
+	initial i
+	transition t {
+		from i
+		to f
+		action tStop ( ) <{ d }
+	}
+}
+
+operation normal_AppleHarvestControl_Prepare_t1_dop ( ) {
+	requires IdeadlineCheck state S0 {
+		state S2 {
+			during deadlineCheck ( 0 )
+		}
+		initial i0_S0
+		state S1 {
+		}
+		transition t1 {
+			from S1
+			to S2
+			condition true
+		}
+		transition t0 {
+			from i0_S0
+			to S1
+		}
+		transition t2 {
+			from S2
+			to S1
+			condition not true
+		}
+	}
+	initial i0
+	transition t0 {
+		from i0
+		to S0
+	}
+}
+
+operation waitOp ( i : nat
+) {
+	initial i0
+	final f
+	state Waiting {
+		state SEnd {
+		}
+		initial i
+		transition t {
+			from i
+			to SEnd
+		}
+	}
+	transition t {
+		from i0
+		to Waiting
+		action # C
+	}
+	transition t2 {
+		from Waiting
+		to f
+		condition since ( C ) == i
+	}
+	clock C
+}
+
+operation waitInterval ( m : nat
+, n : nat
+) {
+	requires IwaitOp initial i
+	junction j
+	final f
+	transition trSelf {
+		from j
+		to j
+		condition since ( C ) < n
+		action waitOp ( 1 )
+	}
+	transition trI {
+		from i
+		to j
+		action # C
+	}
+	transition trF {
+		from j
+		to f
+		condition since ( C ) >= m
+	}
+	clock C
+}
+
+operation deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t ( d : nat
+) {
+	uses defEvents_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t requires IdeadlineCheck requires I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t var g : boolean = false
+	final f
+	state S0 {
+		initial i
+		final f
+		state S1 {
+		}
+		transition t1 {
+			from S1
+			to f
+			action normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t ( )
+		}
+		transition t0 {
+			from i
+			to S1
+		}
+		during deadlineCheck ( d )
+	}
+	initial i
+	transition t0 {
+		from i
+		to S0
+	}
+	transition t1 {
+		from S0
+		to f
+		condition g
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t ( ) {
+	uses defEvents_normal_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_S0_t requires req_normal_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_S0_t requires I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t_op requires I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9_op final f
+	initial i
+	junction t_j_2_9
+	transition t {
+		from i
+		to t_j_2_9
+		action normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t_op ( )
+	}
+	transition t_t_2_9 {
+		from t_j_2_9
+		to f
+		action normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9_op ( )
+	}
+}
+
+operation deadlineAction_normal_AppleHarvestControl_GetApple_entry_t ( d : nat
+) {
+	requires IdeadlineCheck requires I_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t requires req_normal_AppleHarvestControl_GetApple_entry_t var g : boolean = false
+	final f
+	initial i
+	state S0 {
+		initial i
+		state S1 {
+		}
+		final f
+		transition t1 {
+			from S1
+			to f
+			action normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t ( )
+		}
+		transition t0 {
+			from i
+			to S1
+		}
+		during deadlineCheck ( d )
+	}
+	transition t1 {
+		from S0
+		to f
+		condition g
+	}
+	transition t0 {
+		from i
+		to S0
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t ( ) {
+	requires req_normal_normal_AppleHarvestControl_GetApple_entry_S0_t requires IwaitInterval requires I_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7_op initial i
+	final f
+	junction t_j_2_7
+	junction t_j_8_10
+	junction t_t_8_10_j_7_11
+	junction t_t_8_10_t_7_11_j_6_12
+	junction t_t_8_10_t_7_11_t_6_12_j_5_13
+	junction t_t_8_10_t_7_11_t_6_12_t_5_13_j_4_14
+	junction t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_j_3_15
+	junction t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_t_3_15_j_2_16
+	transition t {
+		from i
+		to t_j_8_10
+		action move ( positions ( nextApple ) [ 1 ] )
+	}
+	transition t_t_2_7 {
+		from t_j_2_7
+		to f
+		action normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7_op ( )
+	}
+	transition t_t_8_10 {
+		from t_j_8_10
+		to t_t_8_10_j_7_11
+		action waitInterval ( 0 , approachTime )
+	}
+	transition t_t_8_10_t_7_11 {
+		from t_t_8_10_j_7_11
+		to t_t_8_10_t_7_11_j_6_12
+		action grasp ( positions ( nextApple ) [ 2 ] )
+	}
+	transition t_t_8_10_t_7_11_t_6_12 {
+		from t_t_8_10_t_7_11_j_6_12
+		to t_t_8_10_t_7_11_t_6_12_j_5_13
+		action waitInterval ( 0 , graspTime )
+	}
+	transition t_t_8_10_t_7_11_t_6_12_t_5_13 {
+		from t_t_8_10_t_7_11_t_6_12_j_5_13
+		to t_t_8_10_t_7_11_t_6_12_t_5_13_j_4_14
+		action pick ( )
+	}
+	transition t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14 {
+		from t_t_8_10_t_7_11_t_6_12_t_5_13_j_4_14
+		to t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_j_3_15
+		action waitInterval ( 0 , pickTime )
+	}
+	transition t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_t_3_15 {
+		from t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_j_3_15
+		to t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_t_3_15_j_2_16
+		action drop ( positions ( nextApple ) [ 3 ] )
+	}
+	transition t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_t_3_15_t_2_16 {
+		from t_t_8_10_t_7_11_t_6_12_t_5_13_t_4_14_t_3_15_j_2_16
+		to t_j_2_7
+		action waitInterval ( 0 , dropTime )
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t ( ) {
+	uses defEvents_normal_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_S0_t requires req_normal_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_S0_t requires I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t_op requires I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6_op final f
+	initial i
+	junction t_j_2_6
+	transition t {
+		from i
+		to t_j_2_6
+		action normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t_op ( )
+	}
+	transition t_t_2_6 {
+		from t_j_2_6
+		to f
+		action normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6_op ( )
+	}
+}
+
+operation deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t ( d : nat
+) {
+	uses defEvents_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t requires IdeadlineCheck requires I_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t var g : boolean = false
+	final f
+	initial i
+	state S0 {
+		final f
+		initial i
+		state S1 {
+		}
+		transition t1 {
+			from S1
+			to f
+			action normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t ( )
+		}
+		transition t0 {
+			from i
+			to S1
+		}
+		during deadlineCheck ( d )
+	}
+	transition t0 {
+		from i
+		to S0
+	}
+	transition t1 {
+		from S0
+		to f
+		condition g
+	}
+}
+
+operation normal_IKSolver_Solve_t3_op_t_elseJ__t_elseTA__op ( ) {
+	final f
+	initial i
+	transition t {
+		from i
+		to f
+		action skip
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t_op ( ) {
+	uses defEvents_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_i_t initial i
+	final f
+	transition t {
+		from i
+		to f
+		action startIKSolver
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t_op ( ) {
+	uses defEvents_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_i_t final f
+	initial i
+	transition t {
+		from i
+		to f
+		action startGoHome
+	}
+}
+
+operation normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8_op ( ) {
+	requires req_normal_IKSolver_Solve_entry_t_t_3_4_j_2_8_t_t_3_4_t_2_8 final f
+	initial i
+	transition t {
+		from i
+		to f
+		action p3 = jointStorage ( apple )
+	}
+}
+
+operation normal_IKSolver_Solve_entry_i_t_op ( ) {
+	requires req_normal_IKSolver_Solve_entry_i_t final f
+	initial i
+	transition t {
+		from i
+		to f
+		action p1 = jointApproach ( apple )
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6_op ( ) {
+	requires req_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Start_t1_op_t_t_j_2_6_t_t_2_6 final f
+	initial i
+	transition t {
+		from i
+		to f
+		action g = true
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9_op ( ) {
+	requires req_normal_deadlineAction_normal_AppleHarvestControl_LocalizeFruit_Solving_t2_op_t_t_j_2_9_t_t_2_9 final f
+	initial i
+	transition t {
+		from i
+		to f
+		action g = true
+	}
+}
+
+operation normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7_op ( ) {
+	requires req_normal_deadlineAction_normal_AppleHarvestControl_GetApple_entry_t_t_j_2_7_t_t_2_7 initial i
+	final f
+	transition t {
+		from i
+		to f
+		action g = true
+	}
+}
+
+operation normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5_op ( ) {
+	requires req_normal_AppleHarvestControl_LocalizeFruit_entry_t_j_2_5_t_t_2_5 final f
+	initial i
+	transition t {
+		from i
+		to f
+		action localized = false
+	}
+}
+
+operation normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4_op ( ) {
+	requires req_normal_IKSolver_Solve_entry_t_j_3_4_t_t_3_4 initial i
+	final f
+	transition t {
+		from i
+		to f
+		action p2 = jointFruit ( apple )
+	}
+}
+
+operation normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA__op ( ) {
+	requires req_normal_IKSolver_Solve_t3_op_t_thenJ__t_thenTA_ initial i
+	final f
+	transition t {
+		from i
+		to f
+		action positions = addApple ( positions , apple , p1 , p2 , p3 )
+	}
+}
+
+module Harvester {
+	connection Arm on takePic to ctrl_ref0 on takePic ( _async )
+	cref ctrl_ref0 = ControlArm
+	robotic platform Arm {
+		uses Camera provides ArmOperations }
+
+}
+

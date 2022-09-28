@@ -1,0 +1,1 @@
+package setoperations import set_toolkit::* type Coord3D function choose (  s : Set( Coord3D ) ) : Coord3D { precondition s != { } postcondition result in s }
