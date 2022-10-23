@@ -1,0 +1,31 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 23-10-2022 17:42:06
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "pkg515_main_defs.csp"
+include "core_defs.csp"
+include "state_defs.csp"
+include "pkg515_main_deadlineCheck.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+channel r__
+-- generate pkg515_main_OP_deadlineCheck
+P_pkg515_main_OP_deadlineCheck = let
+	id__ = 0
+	
+	param_d = 0
+	
+	
+	
+within
+	pkg515_main::OP_deadlineCheck::O__(id__,
+				param_d)
+assert P_pkg515_main_OP_deadlineCheck :[deadlock-free]	
+assert P_pkg515_main_OP_deadlineCheck;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_deadlineCheck :[deterministic]
+assert P_pkg515_main_OP_deadlineCheck :[divergence-free]

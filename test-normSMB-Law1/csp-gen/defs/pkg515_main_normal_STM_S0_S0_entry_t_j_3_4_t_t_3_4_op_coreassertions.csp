@@ -1,0 +1,29 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 23-10-2022 17:42:06
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "pkg515_main_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op.csp"
+include "pkg515_main_defs.csp"
+include "core_defs.csp"
+include "state_defs.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+channel r__
+-- generate pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op
+P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op :[divergence-free]

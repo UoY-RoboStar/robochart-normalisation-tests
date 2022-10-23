@@ -1,0 +1,41 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 23-10-2022 17:42:06
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "core_timed_defs.csp"
+include "pkg515_main_defs.csp"
+include "core_defs.csp"
+include "pkg515_main_waitInterval.csp"
+include "state_timed_defs.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+
+transparent wbisim
+channel r__
+-- generate pkg515_main_OP_waitInterval
+P_pkg515_main_OP_waitInterval = let
+	id__ = 0
+	
+	param_m = 0
+	param_n = 0
+	
+	
+	
+within
+	pkg515_main::OP_waitInterval::O__(id__,
+				param_m,
+				param_n)
+assert P_pkg515_main_OP_waitInterval :[deadlock-free]	
+assert P_pkg515_main_OP_waitInterval;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_waitInterval :[deterministic]
+assert P_pkg515_main_OP_waitInterval :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg515_main_OP_waitInterval[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg515_main_OP_waitInterval

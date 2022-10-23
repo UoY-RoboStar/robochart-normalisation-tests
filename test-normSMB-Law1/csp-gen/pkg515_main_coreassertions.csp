@@ -1,0 +1,329 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 23-10-2022 17:42:06
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "pkg515_main.csp"
+
+-- generate pkg515_main_STM
+P_pkg515_main_STM = let
+	id__ = 0
+	
+	
+	
+within
+	pkg515_main::STM::O__(
+		id__
+	)
+assert P_pkg515_main_STM :[deadlock-free]	
+assert P_pkg515_main_STM;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_STM :[deterministic]
+assert P_pkg515_main_STM :[divergence-free]
+
+-- generate pkg515_main_OP_normal_STM_S1_during
+P_pkg515_main_OP_normal_STM_S1_during = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S1_during::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S1_during :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S1_during;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S1_during :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S1_during :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_i_T0_op
+P_pkg515_main_OP_normal_STM_i_T0_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_i_T0_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_i_T0_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_i_T0_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_i_T0_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_i_T0_op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S0_S0_entry
+P_pkg515_main_OP_normal_STM_S0_S0_entry = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_S0_entry::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S0_during
+P_pkg515_main_OP_normal_STM_S0_during = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_during::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_during :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_during;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_during :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_during :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S1_entry
+P_pkg515_main_OP_normal_STM_S1_entry = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S1_entry::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S1_entry :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S1_entry;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S1_entry :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S1_entry :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S0_S0_exit
+P_pkg515_main_OP_normal_STM_S0_S0_exit = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_S0_exit::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_S0_exit :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_S0_exit;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_S0_exit :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_S0_exit :[divergence-free]
+-- generate pkg515_main_OP_tStop
+P_pkg515_main_OP_tStop = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_tStop::O__(id__)
+assert P_pkg515_main_OP_tStop :[deadlock-free]	
+assert P_pkg515_main_OP_tStop;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_tStop :[deterministic]
+assert P_pkg515_main_OP_tStop :[divergence-free]
+-- generate pkg515_main_OP_deadlineCheck
+P_pkg515_main_OP_deadlineCheck = let
+	id__ = 0
+	
+	param_d = 0
+	
+	
+	
+within
+	pkg515_main::OP_deadlineCheck::O__(id__,
+				param_d)
+assert P_pkg515_main_OP_deadlineCheck :[deadlock-free]	
+assert P_pkg515_main_OP_deadlineCheck;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_deadlineCheck :[deterministic]
+assert P_pkg515_main_OP_deadlineCheck :[divergence-free]
+-- generate pkg515_main_OP_waitOp
+P_pkg515_main_OP_waitOp = let
+	id__ = 0
+	
+	param_i = 0
+	
+	
+	
+within
+	pkg515_main::OP_waitOp::O__(id__,
+				param_i)
+assert P_pkg515_main_OP_waitOp :[deadlock-free]	
+assert P_pkg515_main_OP_waitOp;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_waitOp :[deterministic]
+assert P_pkg515_main_OP_waitOp :[divergence-free]
+-- generate pkg515_main_OP_waitInterval
+P_pkg515_main_OP_waitInterval = let
+	id__ = 0
+	
+	param_m = 0
+	param_n = 0
+	
+	
+	
+within
+	pkg515_main::OP_waitInterval::O__(id__,
+				param_m,
+				param_n)
+assert P_pkg515_main_OP_waitInterval :[deadlock-free]	
+assert P_pkg515_main_OP_waitInterval;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_waitInterval :[deterministic]
+assert P_pkg515_main_OP_waitInterval :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op
+P_pkg515_main_OP_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S0_during_t_thenJ__t_thenTA__op
+P_pkg515_main_OP_normal_STM_S0_during_t_thenJ__t_thenTA__op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_during_t_thenJ__t_thenTA__op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_during_t_thenJ__t_thenTA__op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_during_t_thenJ__t_thenTA__op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_during_t_thenJ__t_thenTA__op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_during_t_thenJ__t_thenTA__op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S1_entry_i_t_op
+P_pkg515_main_OP_normal_STM_S1_entry_i_t_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S1_entry_i_t_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S1_entry_i_t_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S1_entry_i_t_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S1_entry_i_t_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S1_entry_i_t_op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S0_during_t_j_2_6_t_t_2_6_op
+P_pkg515_main_OP_normal_STM_S0_during_t_j_2_6_t_t_2_6_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_during_t_j_2_6_t_t_2_6_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_during_t_j_2_6_t_t_2_6_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_during_t_j_2_6_t_t_2_6_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_during_t_j_2_6_t_t_2_6_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_during_t_j_2_6_t_t_2_6_op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op
+P_pkg515_main_OP_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_i_T0_op_i_t_op
+P_pkg515_main_OP_normal_STM_i_T0_op_i_t_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_i_T0_op_i_t_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_i_T0_op_i_t_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_i_T0_op_i_t_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_i_T0_op_i_t_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_i_T0_op_i_t_op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op
+P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op :[divergence-free]
+-- generate pkg515_main_OP_normal_STM_S0_during_t_elseJ__t_elseTA__op
+P_pkg515_main_OP_normal_STM_S0_during_t_elseJ__t_elseTA__op = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg515_main::OP_normal_STM_S0_during_t_elseJ__t_elseTA__op::O__(id__)
+assert P_pkg515_main_OP_normal_STM_S0_during_t_elseJ__t_elseTA__op :[deadlock-free]	
+assert P_pkg515_main_OP_normal_STM_S0_during_t_elseJ__t_elseTA__op;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_OP_normal_STM_S0_during_t_elseJ__t_elseTA__op :[deterministic]
+assert P_pkg515_main_OP_normal_STM_S0_during_t_elseJ__t_elseTA__op :[divergence-free]
+
+-- generate pkg515_main_C1
+P_pkg515_main_C1 = let
+	id__ = 0
+	
+	
+	
+		
+within
+	pkg515_main::C1::O__(id__)
+
+assert P_pkg515_main_C1 :[deadlock-free]	
+assert P_pkg515_main_C1;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_C1 :[deterministic]
+assert P_pkg515_main_C1 :[divergence-free]
+
+-- generate pkg515_main_C1_stm0
+P_pkg515_main_C1_stm0 = let
+	id__ = 0
+	
+	
+	
+within
+	pkg515_main::C1::stm0::O__(
+		id__
+	)
+assert P_pkg515_main_C1_stm0 :[deadlock-free]	
+assert P_pkg515_main_C1_stm0;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_C1_stm0 :[deterministic]
+assert P_pkg515_main_C1_stm0 :[divergence-free]
+
+-- generate pkg515_main_M
+P_pkg515_main_M = let
+	id__ = 0
+	
+	
+	
+		
+	
+within
+	pkg515_main::M::O__(id__)
+assert P_pkg515_main_M :[deadlock-free]	
+assert P_pkg515_main_M;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_M :[deterministic]
+assert P_pkg515_main_M :[divergence-free]
+
+-- generate pkg515_main_M_c0
+P_pkg515_main_M_c0 = let
+	id__ = 0
+	
+	
+	
+		
+within
+	pkg515_main::M::c0::O__(id__)
+
+assert P_pkg515_main_M_c0 :[deadlock-free]	
+assert P_pkg515_main_M_c0;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_M_c0 :[deterministic]
+assert P_pkg515_main_M_c0 :[divergence-free]
+

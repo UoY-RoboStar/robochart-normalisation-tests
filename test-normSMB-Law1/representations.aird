@@ -86,7 +86,7 @@
     <semanticResources>normalForm/519/robosim/main.rst</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fQjIwFI3Ee2ref8j3k0WxQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_fRrxMFI3Ee2ref8j3k0WxQ" name="main.rct" repPath="#_fRXoIFI3Ee2ref8j3k0WxQ" changeId="e21ec306-26f9-49cf-8f2f-45da676492f9">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_fRrxMFI3Ee2ref8j3k0WxQ" name="main.rct" repPath="#_fRXoIFI3Ee2ref8j3k0WxQ" changeId="ed3923b2-6594-45a7-b2aa-226ae37d1c19">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']"/>
         <target xmi:type="robochart:RCPackage" href="main.rct#/"/>
       </ownedRepresentationDescriptors>
@@ -702,7 +702,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']/@ownedRepresentations[name='SpecificationID']/@defaultLayer/@containerMappings[name='RoboticPlatformDefID']/@subNodeMappings[name='RequiredID']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" uid="_gBXIYFI8Ee2W2OA1XGdDoA" name="x: int = 1">
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_gBXIYFI8Ee2W2OA1XGdDoA" name="x: nat = 1">
           <target xmi:type="robochart:VariableList" href="main.rct#//@machines.0/@variableList.0"/>
           <semanticElements xmi:type="robochart:VariableList" href="main.rct#//@machines.0/@variableList.0"/>
           <ownedStyle xmi:type="diagram:Square" uid="_gBXIYVI8Ee2W2OA1XGdDoA" labelSize="10" iconPath="/circus.robocalc.robochart.graphical/icons/variable.png" labelAlignment="LEFT" labelPosition="node">

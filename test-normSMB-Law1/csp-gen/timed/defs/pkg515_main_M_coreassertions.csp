@@ -1,0 +1,59 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 23-10-2022 17:42:06
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "core_timed_defs.csp"
+include "pkg515_main_defs.csp"
+include "core_defs.csp"
+include "pkg515_main_M.csp"
+include "state_timed_defs.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+
+transparent wbisim
+channel r__
+-- generate pkg515_main_M
+P_pkg515_main_M = let
+	id__ = 0
+	
+	
+	
+		
+	
+within
+	pkg515_main_M::O__(id__)
+assert P_pkg515_main_M :[deadlock-free]	
+assert P_pkg515_main_M;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_M :[deterministic]
+assert P_pkg515_main_M :[divergence-free]
+
+-- generate pkg515_main_M_c0
+P_pkg515_main_M_c0 = let
+	id__ = 0
+	
+	
+	
+		
+within
+	pkg515_main_M::c0::O__(id__)
+
+assert P_pkg515_main_M_c0 :[deadlock-free]	
+assert P_pkg515_main_M_c0;RUN({r__}) :[deadlock-free]
+assert P_pkg515_main_M_c0 :[deterministic]
+assert P_pkg515_main_M_c0 :[divergence-free]
+
+-- timed deadlock free
+assert prioritise(P_pkg515_main_M_c0[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg515_main_M_c0
+-- timed deadlock free
+assert prioritise(P_pkg515_main_M[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg515_main_M

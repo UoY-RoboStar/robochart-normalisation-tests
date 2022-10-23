@@ -4,7 +4,7 @@ interface IEvents{
 	event evOut
 }
 
-interface IOps{
+interface IOps {
 	op1()
 	op2()
 }
