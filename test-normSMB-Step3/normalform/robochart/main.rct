@@ -1,0 +1,271 @@
+package pkg528_main interface IEvents {
+	event evOut
+	event evIn
+}
+
+interface IOps {
+	op1 ( )
+	op2 ( )
+}
+
+interface req_normal_STM_S0_S0_exit {
+	op1 ( )
+	op2 ( )
+}
+
+interface I_normal_STM_S0_S0_exit {
+	normal_STM_S0_S0_exit ( )
+}
+
+interface req_normal_STM_S0_iS0_t_op {
+	op2 ( )
+	op1 ( )
+}
+
+interface I_normal_STM_S0_iS0_t_op {
+	normal_STM_S0_iS0_t_op ( )
+}
+
+interface req_normal_STM_S0_during {
+	var x : int = 1
+	clock C
+}
+
+interface I_normal_STM_S0_during {
+	normal_STM_S0_during ( )
+}
+
+interface req_normal_STM_S0_S0_entry {
+	op2 ( )
+	clock C
+}
+
+interface I_normal_STM_S0_S0_entry {
+	normal_STM_S0_S0_entry ( )
+}
+
+interface req_normal_STM_S1_during {
+	op1 ( )
+	op2 ( )
+}
+
+interface I_normal_STM_S1_during {
+	normal_STM_S1_during ( )
+}
+
+interface req_normal_STM_S0_T1_op {
+	op2 ( )
+	op1 ( )
+	var x : int
+	clock C
+}
+
+interface defEvents_normal_STM_S0_T1_op {
+	event evOut
+}
+
+interface I_normal_STM_S0_T1_op {
+	normal_STM_S0_T1_op ( )
+}
+
+interface req_normal_STM_i_T0_op {
+	op2 ( )
+	clock C
+}
+
+interface defEvents_normal_STM_i_T0_op {
+	event evOut
+}
+
+interface I_normal_STM_i_T0_op {
+	normal_STM_i_T0_op ( )
+}
+
+interface req_normal_STM_S1_entry {
+	var x : int = 1
+	clock C
+}
+
+interface I_normal_STM_S1_entry {
+	normal_STM_S1_entry ( )
+}
+
+interface ItStop {
+	tStop ( )
+}
+
+interface IdeadlineCheck {
+	deadlineCheck ( d : nat )
+}
+
+robotic platform RP {
+	uses IEvents provides IOps }
+
+controller C1 {
+	uses IEvents requires IOps opref C1_ref_normal_STM_S0_S0_exit = normal_STM_S0_S0_exit
+	opref C1_ref_normal_STM_S0_iS0_t_op = normal_STM_S0_iS0_t_op
+	opref C1_ref_normal_STM_S0_during = normal_STM_S0_during
+	opref C1_ref_normal_STM_S0_S0_entry = normal_STM_S0_S0_entry
+	opref C1_ref_normal_STM_S1_during = normal_STM_S1_during
+	opref C1_ref_normal_STM_S0_T1_op = normal_STM_S0_T1_op
+	opref C1_ref_normal_STM_i_T0_op = normal_STM_i_T0_op
+	opref C1_ref_normal_STM_S1_entry = normal_STM_S1_entry
+	opref C1_ref_tStop = tStop
+	opref C1_ref_deadlineCheck = deadlineCheck
+	sref stm0 = STM
+	connection stm0 on evOut to C1 on evOut ( _async )
+}
+
+stm STM {
+	uses IEvents requires IOps requires I_normal_STM_S0_S0_exit requires I_normal_STM_S0_iS0_t_op requires I_normal_STM_S0_during requires I_normal_STM_S0_S0_entry requires I_normal_STM_S1_during requires I_normal_STM_S0_T1_op requires I_normal_STM_i_T0_op requires I_normal_STM_S1_entry var x : int = 1
+	initial i
+	state S1 {
+		entry normal_STM_S1_entry ( )
+		during normal_STM_S1_during ( )
+		exit op1 ( )
+	}
+	state S0 {
+		initial iS0
+		state S0 {
+			entry normal_STM_S0_S0_entry ( )
+			during op1 ( )
+			exit normal_STM_S0_S0_exit ( )
+		}
+		transition t {
+			from iS0
+			to S0
+			condition x == 1
+			action normal_STM_S0_iS0_t_op ( )
+		}
+		transition t1 {
+			from S0
+			to S0
+			trigger evIn
+			action op1 ( )
+		}
+		entry op1 ( )
+		during normal_STM_S0_during ( )
+		exit op1 ( )
+	}
+	transition T0 {
+		from i
+		to S0
+		action normal_STM_i_T0_op ( )
+	}
+	transition T1 {
+		from S0
+		to S0
+		trigger evIn
+		action normal_STM_S0_T1_op ( )
+	}
+	clock C
+}
+
+operation normal_STM_S0_S0_exit ( ) {
+	requires req_normal_STM_S0_S0_exit initial i
+	final f
+	transition t {
+		from i
+		to f
+		action op1 ( ) ; op2 ( )
+	}
+}
+
+operation normal_STM_S0_iS0_t_op ( ) {
+	requires req_normal_STM_S0_iS0_t_op final f
+	initial i
+	transition t {
+		from i
+		to f
+		action op1 ( ) ; op2 ( )
+	}
+}
+
+operation normal_STM_S0_during ( ) {
+	requires req_normal_STM_S0_during final f
+	initial i
+	transition t {
+		from i
+		to f
+		action if x == 1 then skip else skip end ; # C
+	}
+}
+
+operation normal_STM_S0_S0_entry ( ) {
+	requires req_normal_STM_S0_S0_entry final f
+	initial i
+	transition t {
+		from i
+		to f
+		action wait ( 1 ) ; # C ; op2 ( )
+	}
+}
+
+operation normal_STM_S1_during ( ) {
+	requires req_normal_STM_S1_during final f
+	initial i
+	transition t {
+		from i
+		to f
+		action op1 ( ) ; op2 ( )
+	}
+}
+
+operation normal_STM_S0_T1_op ( ) {
+	uses defEvents_normal_STM_S0_T1_op requires req_normal_STM_S0_T1_op initial i
+	final f
+	transition t {
+		from i
+		to f
+		action if x == 1 then op1 ( ) else op2 ( ) ; evOut end ; # C
+	}
+}
+
+operation normal_STM_i_T0_op ( ) {
+	uses defEvents_normal_STM_i_T0_op requires req_normal_STM_i_T0_op final f
+	initial i
+	transition t {
+		from i
+		to f
+		action skip ; evOut ; wait ( 1 ) ; # C ; op2 ( )
+	}
+}
+
+operation normal_STM_S1_entry ( ) {
+	requires req_normal_STM_S1_entry initial i
+	final f
+	transition t {
+		from i
+		to f
+		action # C ; x = 1 ; wait ( x )
+	}
+}
+
+operation tStop ( ) {
+	initial i
+	state sStop {
+	}
+	transition t {
+		from i
+		to sStop
+	}
+}
+
+operation deadlineCheck ( d : nat
+) {
+	requires ItStop initial i
+	final f
+	transition t {
+		from i
+		to f
+		action tStop ( ) <{ d }
+	}
+}
+
+module M {
+	connection c0 on evOut to RP0 on evOut ( _async )
+	connection RP0 on evIn to c0 on evIn ( _async )
+	cref c0 = C1
+	rref RP0 = RP
+}
+
