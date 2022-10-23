@@ -1,0 +1,480 @@
+package pkg515_main interface IEvents {
+	event evOut
+}
+
+interface IOps {
+	op1 ( )
+	op2 ( )
+}
+
+interface req_normal_STM_S1_during {
+	op1 ( )
+	op2 ( )
+}
+
+interface I_normal_STM_S1_during {
+	normal_STM_S1_during ( )
+}
+
+interface defEvents_normal_STM_i_T0_op {
+	event evOut
+}
+
+interface I_normal_STM_i_T0_op {
+	normal_STM_i_T0_op ( )
+}
+
+interface req_normal_STM_S0_S0_entry {
+	op2 ( )
+	clock C
+}
+
+interface I_normal_STM_S0_S0_entry {
+	normal_STM_S0_S0_entry ( )
+}
+
+interface req_normal_STM_S0_during {
+	var x : nat = 1
+	clock C
+}
+
+interface I_normal_STM_S0_during {
+	normal_STM_S0_during ( )
+}
+
+interface req_normal_STM_S1_entry {
+	var x : nat = 1
+	clock C
+}
+
+interface I_normal_STM_S1_entry {
+	normal_STM_S1_entry ( )
+}
+
+interface req_normal_STM_S0_S0_exit {
+	op2 ( )
+	op1 ( )
+}
+
+interface I_normal_STM_S0_S0_exit {
+	normal_STM_S0_S0_exit ( )
+}
+
+interface ItStop {
+	tStop ( )
+}
+
+interface IdeadlineCheck {
+	deadlineCheck ( d : nat )
+}
+
+interface IwaitOp {
+	waitOp ( i : nat )
+}
+
+interface IwaitInterval {
+	waitInterval ( m : nat , n : nat )
+}
+
+interface defEvents_normal_STM_i_T0_op_t_j_2_3_t_t_2_3 {
+	event evOut
+}
+
+interface I_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op {
+	normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op ( )
+}
+
+interface I_normal_STM_S0_during_t_thenJ__t_thenTA__op {
+	normal_STM_S0_during_t_thenJ__t_thenTA__op ( )
+}
+
+interface req_normal_STM_S1_entry_i_t {
+	clock C
+}
+
+interface I_normal_STM_S1_entry_i_t_op {
+	normal_STM_S1_entry_i_t_op ( )
+}
+
+interface req_normal_STM_S0_during_t_j_2_6_t_t_2_6 {
+	clock C
+}
+
+interface I_normal_STM_S0_during_t_j_2_6_t_t_2_6_op {
+	normal_STM_S0_during_t_j_2_6_t_t_2_6_op ( )
+}
+
+interface req_normal_STM_S1_entry_t_j_3_2_t_t_3_2 {
+	var x : nat = 1
+}
+
+interface I_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op {
+	normal_STM_S1_entry_t_j_3_2_t_t_3_2_op ( )
+}
+
+interface I_normal_STM_i_T0_op_i_t_op {
+	normal_STM_i_T0_op_i_t_op ( )
+}
+
+interface req_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4 {
+	clock C
+}
+
+interface I_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op {
+	normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op ( )
+}
+
+interface I_normal_STM_S0_during_t_elseJ__t_elseTA__op {
+	normal_STM_S0_during_t_elseJ__t_elseTA__op ( )
+}
+
+robotic platform RP {
+	uses IEvents provides IOps }
+
+controller C1 {
+	uses IEvents requires IOps opref C1_ref_normal_STM_S1_during = normal_STM_S1_during
+	opref C1_ref_normal_STM_i_T0_op = normal_STM_i_T0_op
+	opref C1_ref_normal_STM_S0_S0_entry = normal_STM_S0_S0_entry
+	opref C1_ref_normal_STM_S0_during = normal_STM_S0_during
+	opref C1_ref_normal_STM_S1_entry = normal_STM_S1_entry
+	opref C1_ref_normal_STM_S0_S0_exit = normal_STM_S0_S0_exit
+	opref C1_ref_tStop = tStop
+	opref C1_ref_deadlineCheck = deadlineCheck
+	opref C1_ref_waitOp = waitOp
+	opref C1_ref_waitInterval = waitInterval
+	opref C1_ref_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op = normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op
+	opref C1_ref_normal_STM_S0_during_t_thenJ__t_thenTA__op = normal_STM_S0_during_t_thenJ__t_thenTA__op
+	opref C1_ref_normal_STM_S1_entry_i_t_op = normal_STM_S1_entry_i_t_op
+	opref C1_ref_normal_STM_S0_during_t_j_2_6_t_t_2_6_op = normal_STM_S0_during_t_j_2_6_t_t_2_6_op
+	opref C1_ref_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op = normal_STM_S1_entry_t_j_3_2_t_t_3_2_op
+	opref C1_ref_normal_STM_i_T0_op_i_t_op = normal_STM_i_T0_op_i_t_op
+	opref C1_ref_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op = normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op
+	opref C1_ref_normal_STM_S0_during_t_elseJ__t_elseTA__op = normal_STM_S0_during_t_elseJ__t_elseTA__op
+	sref stm0 = STM
+	connection stm0 on evOut to C1 on evOut ( _async )
+}
+
+stm STM {
+	uses IEvents requires IOps requires I_normal_STM_S1_during 
+	requires I_normal_STM_i_T0_op requires I_normal_STM_S0_S0_entry 
+	requires I_normal_STM_S0_during requires I_normal_STM_S1_entry requires I_normal_STM_S0_S0_exit 
+	var x : nat = 1
+	initial i
+	state S1 {
+		entry normal_STM_S1_entry ( )
+		during normal_STM_S1_during ( )
+		exit op1 ( )
+	}
+	state S0 {
+		initial iS0
+		state S0 {
+			entry normal_STM_S0_S0_entry ( )
+			during op1 ( )
+			exit normal_STM_S0_S0_exit ( )
+		}
+		transition t {
+			from iS0
+			to S0
+		}
+		entry op1 ( )
+		during normal_STM_S0_during ( )
+		exit op1 ( )
+	}
+	transition T0 {
+		from i
+		to S0
+		action normal_STM_i_T0_op ( )
+	}
+	clock C
+}
+
+operation normal_STM_S1_during ( ) {
+	requires req_normal_STM_S1_during initial i
+	final f
+	junction t_j_2_7
+	transition t {
+		from i
+		to t_j_2_7
+		action op1 ( )
+	}
+	transition t_t_2_7 {
+		from t_j_2_7
+		to f
+		action op2 ( )
+	}
+}
+
+operation normal_STM_i_T0_op ( ) {
+	uses defEvents_normal_STM_i_T0_op requires I_normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op requires I_normal_STM_i_T0_op_i_t_op initial i
+	final f
+	junction t_j_2_3
+	transition t {
+		from i
+		to t_j_2_3
+		action normal_STM_i_T0_op_i_t_op ( )
+	}
+	transition t_t_2_3 {
+		from t_j_2_3
+		to f
+		action normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op ( )
+	}
+}
+
+operation normal_STM_S0_S0_entry ( ) {
+	requires req_normal_STM_S0_S0_entry requires IwaitOp requires I_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op initial i
+	final f
+	junction t_j_3_4
+	junction t_t_3_4_j_2_9
+	transition t {
+		from i
+		to t_j_3_4
+		action waitOp ( 1 )
+	}
+	transition t_t_3_4 {
+		from t_j_3_4
+		to t_t_3_4_j_2_9
+		action normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op ( )
+	}
+	transition t_t_3_4_t_2_9 {
+		from t_t_3_4_j_2_9
+		to f
+		action op2 ( )
+	}
+}
+
+operation normal_STM_S0_during ( ) {
+	requires req_normal_STM_S0_during requires I_normal_STM_S0_during_t_thenJ__t_thenTA__op requires I_normal_STM_S0_during_t_j_2_6_t_t_2_6_op requires I_normal_STM_S0_during_t_elseJ__t_elseTA__op initial i
+	final f
+	junction t_j_2_6
+	junction t_initialJunction_
+	junction t_thenJ_
+	junction t_elseJ_
+	transition t_t_2_6 {
+		from t_j_2_6
+		to f
+		action normal_STM_S0_during_t_j_2_6_t_t_2_6_op ( )
+	}
+	transition t_initial_ {
+		from i
+		to t_initialJunction_
+	}
+	transition t_elseTG_ {
+		from t_initialJunction_
+		to t_elseJ_
+		condition not x == 1
+	}
+	transition t_thenTG_ {
+		from t_initialJunction_
+		to t_thenJ_
+		condition x == 1
+	}
+	transition t_thenTA_ {
+		from t_thenJ_
+		to t_j_2_6
+		action normal_STM_S0_during_t_thenJ__t_thenTA__op ( )
+	}
+	transition t_elseTA_ {
+		from t_elseJ_
+		to t_j_2_6
+		action normal_STM_S0_during_t_elseJ__t_elseTA__op ( )
+	}
+}
+
+operation normal_STM_S1_entry ( ) {
+	requires req_normal_STM_S1_entry 
+	requires IwaitOp 
+	requires I_normal_STM_S1_entry_i_t_op requires I_normal_STM_S1_entry_t_j_3_2_t_t_3_2_op initial i
+	final f
+	junction t_j_3_2
+	junction t_t_3_2_j_2_8
+	transition t {
+		from i
+		to t_j_3_2
+		action normal_STM_S1_entry_i_t_op ( )
+	}
+	transition t_t_3_2 {
+		from t_j_3_2
+		to t_t_3_2_j_2_8
+		action normal_STM_S1_entry_t_j_3_2_t_t_3_2_op ( )
+	}
+	transition t_t_3_2_t_2_8 {
+		from t_t_3_2_j_2_8
+		to f
+		action waitOp ( x )
+	}
+}
+
+operation normal_STM_S0_S0_exit ( ) {
+	requires req_normal_STM_S0_S0_exit final f
+	initial i
+	junction t_j_2_5
+	transition t {
+		from i
+		to t_j_2_5
+		action op1 ( )
+	}
+	transition t_t_2_5 {
+		from t_j_2_5
+		to f
+		action op2 ( )
+	}
+}
+
+operation tStop ( ) {
+	state sStop {
+	}
+	initial i
+	transition t {
+		from i
+		to sStop
+	}
+}
+
+operation deadlineCheck ( d : nat
+) {
+	requires ItStop initial i
+	final f
+	transition t {
+		from i
+		to f
+		action tStop ( ) <{ d }
+	}
+}
+
+operation waitOp ( i : nat
+) {
+	final f
+	state Waiting {
+		initial i
+		state SEnd {
+		}
+		transition t {
+			from i
+			to SEnd
+		}
+	}
+	initial i0
+	transition t2 {
+		from Waiting
+		to f
+		condition since ( C ) == i
+	}
+	transition t {
+		from i0
+		to Waiting
+		action # C
+	}
+	clock C
+}
+
+operation waitInterval ( m : nat
+, n : nat
+) {
+	requires IwaitOp final f
+	junction j
+	initial i
+	transition trI {
+		from i
+		to j
+		action # C
+	}
+	transition trF {
+		from j
+		to f
+		condition since ( C ) >= m
+	}
+	transition trSelf {
+		from j
+		to j
+		condition since ( C ) < n
+		action waitOp ( 1 )
+	}
+	clock C
+}
+
+operation normal_STM_i_T0_op_t_j_2_3_t_t_2_3_op ( ) {
+	uses defEvents_normal_STM_i_T0_op_t_j_2_3_t_t_2_3 initial i
+	final f
+	transition t {
+		from i
+		to f
+		action evOut
+	}
+}
+
+operation normal_STM_S0_during_t_thenJ__t_thenTA__op ( ) {
+	final f
+	initial i
+	transition t {
+		from i
+		to f
+		action skip
+	}
+}
+
+operation normal_STM_S1_entry_i_t_op ( ) {
+	requires req_normal_STM_S1_entry_i_t final f
+	initial i
+	transition t {
+		from i
+		to f
+		action # C
+	}
+}
+
+operation normal_STM_S0_during_t_j_2_6_t_t_2_6_op ( ) {
+	requires req_normal_STM_S0_during_t_j_2_6_t_t_2_6 final f
+	initial i
+	transition t {
+		from i
+		to f
+		action # C
+	}
+}
+
+operation normal_STM_S1_entry_t_j_3_2_t_t_3_2_op ( ) {
+	requires req_normal_STM_S1_entry_t_j_3_2_t_t_3_2 final f
+	initial i
+	transition t {
+		from i
+		to f
+		action x = 1
+	}
+}
+
+operation normal_STM_i_T0_op_i_t_op ( ) {
+	initial i
+	final f
+	transition t {
+		from i
+		to f
+		action skip
+	}
+}
+
+operation normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4_op ( ) {
+	requires req_normal_STM_S0_S0_entry_t_j_3_4_t_t_3_4 initial i
+	final f
+	transition t {
+		from i
+		to f
+		action # C
+	}
+}
+
+operation normal_STM_S0_during_t_elseJ__t_elseTA__op ( ) {
+	initial i
+	final f
+	transition t {
+		from i
+		to f
+		action skip
+	}
+}
+
+module M {
+	connection c0 on evOut to RP0 on evOut ( _async )
+	cref c0 = C1
+	rref RP0 = RP
+}
+

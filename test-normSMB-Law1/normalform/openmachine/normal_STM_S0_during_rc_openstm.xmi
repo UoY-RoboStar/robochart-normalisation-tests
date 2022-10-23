@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<C2S:RCSeqOpenStateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:C2S="http://www.robocalc.circus/C2S" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <left xsi:type="C2S:RCBasicOpenStateMachine">
+    <nodes xsi:type="C2S:EInitial" name="i" entrypoint="true"/>
+    <transitions name="t_initial_" source="//@left/@nodes.0" target="//@right/@left/@nodes.0"/>
+  </left>
+  <right xsi:type="C2S:RCSeqOpenStateMachine">
+    <left xsi:type="C2S:RCBasicOpenStateMachine">
+      <nodes xsi:type="C2S:EJunction" name="t_initialJunction_" entrypoint="true"/>
+      <transitions name="t_thenTG_" source="//@right/@left/@nodes.0" target="//@right/@right/@right/@left/@nodes.0">
+        <condition xsi:type="robochart:Equals">
+          <left xsi:type="robochart:RefExp">
+            <ref xsi:type="robochart:Variable" href="../robochart/main.rct#//@interfaces.2/@variableList.0/@vars.0"/>
+          </left>
+          <right xsi:type="robochart:IntegerExp" value="1"/>
+        </condition>
+      </transitions>
+      <transitions name="t_elseTG_" source="//@right/@left/@nodes.0" target="//@right/@right/@left/@nodes.0">
+        <condition xsi:type="robochart:Not">
+          <exp xsi:type="robochart:Equals">
+            <left xsi:type="robochart:RefExp">
+              <ref xsi:type="robochart:Variable" href="../robochart/main.rct#//@interfaces.2/@variableList.0/@vars.0"/>
+            </left>
+            <right xsi:type="robochart:IntegerExp" value="1"/>
+          </exp>
+        </condition>
+      </transitions>
+    </left>
+    <right xsi:type="C2S:RCSeqOpenStateMachine">
+      <left xsi:type="C2S:RCBasicOpenStateMachine">
+        <nodes xsi:type="C2S:EJunction" name="t_elseJ_" entrypoint="true"/>
+        <transitions name="t_elseTA_" source="//@right/@right/@left/@nodes.0" target="//@right/@right/@right/@right/@left/@nodes.0">
+          <action xsi:type="robochart:Call">
+            <operation href="../robochart/main.rct#//@interfaces.28/@operations.0"/>
+          </action>
+        </transitions>
+      </left>
+      <right xsi:type="C2S:RCSeqOpenStateMachine">
+        <left xsi:type="C2S:RCBasicOpenStateMachine">
+          <nodes xsi:type="C2S:EJunction" name="t_thenJ_" entrypoint="true"/>
+          <transitions name="t_thenTA_" source="//@right/@right/@right/@left/@nodes.0" target="//@right/@right/@right/@right/@left/@nodes.0">
+            <action xsi:type="robochart:Call">
+              <operation href="../robochart/main.rct#//@interfaces.27/@operations.0"/>
+            </action>
+          </transitions>
+        </left>
+        <right xsi:type="C2S:RCSeqOpenStateMachine">
+          <left xsi:type="C2S:RCBasicOpenStateMachine">
+            <nodes xsi:type="C2S:EJunction" name="t_j_2_3" entrypoint="true"/>
+            <transitions name="t_t_2_3" source="//@right/@right/@right/@right/@left/@nodes.0" target="//@right/@right/@right/@right/@right/@nodes.0">
+              <action xsi:type="robochart:Call">
+                <operation href="../robochart/main.rct#//@interfaces.22/@operations.0"/>
+              </action>
+            </transitions>
+          </left>
+          <right xsi:type="C2S:RCBasicOpenStateMachine">
+            <nodes xsi:type="C2S:EFinal" name="f" entrypoint="true"/>
+          </right>
+        </right>
+      </right>
+    </right>
+  </right>
+</C2S:RCSeqOpenStateMachine>
