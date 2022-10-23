@@ -23,6 +23,21 @@
     <semanticResources>normalForm/intermediate/STM_rs_openstm.xmi</semanticResources>
     <semanticResources>normalForm/openmachine/STM_rs_basicostm.xmi</semanticResources>
     <semanticResources>normalForm/openmachine/STM_rs_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/527/intermediate/STM_rs_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/527/intermediate/STM_rs_basicostm.xmi</semanticResources>
+    <semanticResources>normalForm/robochart/main.rct</semanticResources>
+    <semanticResources>normalForm/527/openmachine/STM_rs_basicostm.xmi</semanticResources>
+    <semanticResources>normalForm/527/openmachine/STM_rs_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/STM_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_S0_S0_entry_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_S0_S0_exit_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_S0_T1_op_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_S0_during_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_S0_iS0_t_op_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_S1_during_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_S1_entry_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/normal_STM_i_T0_op_rc_openstm.xmi</semanticResources>
+    <semanticResources>normalForm/openmachine/tStop_rc_openstm.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fQjIwFI3Ee2ref8j3k0WxQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/circus.robocalc.robochart.graphical/description/robochart.odesign#//@ownedViewpoints[name='RoboChartID']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_fRrxMFI3Ee2ref8j3k0WxQ" name="main.rct" repPath="#_fRXoIFI3Ee2ref8j3k0WxQ" changeId="1f5c2474-d8ba-4ce9-9a6a-e291f966df92">
