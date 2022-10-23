@@ -1,0 +1,72 @@
+package main
+
+interface IEvents{
+	event evOut
+		event evIn
+}
+
+interface IOps{
+	op1()
+	op2()
+}
+
+robotic platform RP {
+	uses IEvents
+	provides IOps
+	}
+
+module M {
+	cref c0 = C1
+	rref RP0 = RP
+	connection c0 on evOut to RP0 on evOut ( _async )
+	connection RP0 on evIn to c0 on evIn ( _async )
+
+}
+
+controller C1 {
+	sref stm0 = STM
+	uses IEvents
+	requires IOps
+	connection stm0 on evOut to C1 on evOut ( _async )
+
+}
+
+stm STM {
+	uses IEvents
+	requires IOps
+	initial i
+	clock C
+	var x:int=1
+	state S1{entry #C;x=1;wait(x)
+		     during op1();op2()
+		     exit op1()
+	}
+	state S0 {
+		entry op1()
+		during if x==1 then skip else skip end; #C
+		exit op1() 
+		initial iS0
+		state S0{entry wait(1);#C;op2()
+			during op1()
+			exit op1();op2()
+		}
+		transition t{from iS0 to S0 condition x==1 action op1();op2()}
+		transition t1{from S0 to S0 trigger evIn action op1()}
+	}
+	
+	transition T0 {
+		from i to S0
+		action skip;evOut;wait(1);#C;op2()
+	}
+	
+	transition T1 {
+		from S0 to S0
+		trigger evIn
+		action if x==1 then op1() else op2();evOut end; #C
+	}
+	
+	
+
+	
+
+}
