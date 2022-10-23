@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<C2S:RCSeqOpenStateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:C2S="http://www.robocalc.circus/C2S" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <left xsi:type="C2S:RCBasicOpenStateMachine">
+    <nodes xsi:type="C2S:EInitial" name="i0" entrypoint="true"/>
+    <transitions name="t0" source="//@left/@nodes.0" target="//@right/@nodes.0"/>
+  </left>
+  <right xsi:type="C2S:RCBasicOpenStateMachine">
+    <nodes xsi:type="C2S:EState" name="S0" entrypoint="true">
+      <nodes xsi:type="C2S:EState" name="S1"/>
+      <nodes xsi:type="C2S:EInitial" name="i0_S0" entrypoint="true"/>
+      <nodes xsi:type="C2S:EState" name="S2">
+        <actions xsi:type="robochart:DuringAction">
+          <action xsi:type="robochart:Call">
+            <operation href="../robochart/main.rct#//@interfaces.17/@operations.0"/>
+            <args xsi:type="robochart:IntegerExp"/>
+          </action>
+        </actions>
+      </nodes>
+      <transitions name="t0" source="//@right/@nodes.0/@nodes.1" target="//@right/@nodes.0/@nodes.0"/>
+      <transitions name="t1" source="//@right/@nodes.0/@nodes.0" target="//@right/@nodes.0/@nodes.2">
+        <condition xsi:type="robochart:BooleanExp" value="true"/>
+      </transitions>
+      <transitions name="t2" source="//@right/@nodes.0/@nodes.2" target="//@right/@nodes.0/@nodes.0">
+        <condition xsi:type="robochart:Not">
+          <exp xsi:type="robochart:BooleanExp" value="true"/>
+        </condition>
+      </transitions>
+    </nodes>
+  </right>
+</C2S:RCSeqOpenStateMachine>
