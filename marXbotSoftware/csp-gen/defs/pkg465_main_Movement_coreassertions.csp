@@ -1,0 +1,54 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 28-09-2022 20:23:04
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "core_defs.csp"
+include "pkg465_main_Movement.csp"
+include "state_defs.csp"
+include "pkg465_main_defs.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+channel r__
+-- generate pkg465_main_Movement
+P_pkg465_main_Movement = let
+	id__ = 0
+	
+	
+	
+	const_pkg465_main_Movement_stm_ref0_lvel = const_pkg465_main_SMMovement_lvel
+	const_pkg465_main_Movement_stm_ref0_avel = const_pkg465_main_SMMovement_avel
+	const_pkg465_main_Movement_stm_ref0_PI = const_pkg465_main_SMMovement_PI
+		
+within
+	pkg465_main_Movement::O__(id__,
+			    const_pkg465_main_Movement_stm_ref0_lvel,
+			    const_pkg465_main_Movement_stm_ref0_avel,
+			    const_pkg465_main_Movement_stm_ref0_PI)
+
+assert P_pkg465_main_Movement :[deadlock-free]	
+assert P_pkg465_main_Movement;RUN({r__}) :[deadlock-free]
+assert P_pkg465_main_Movement :[deterministic]
+assert P_pkg465_main_Movement :[divergence-free]
+
+-- generate pkg465_main_Movement_stm_ref0
+P_pkg465_main_Movement_stm_ref0 = let
+	id__ = 0
+	
+	
+	
+within
+	pkg465_main_Movement::stm_ref0::O__(
+		id__,
+		const_pkg465_main_SMMovement_lvel,
+		const_pkg465_main_SMMovement_avel,
+		const_pkg465_main_SMMovement_PI
+	)
+assert P_pkg465_main_Movement_stm_ref0 :[deadlock-free]	
+assert P_pkg465_main_Movement_stm_ref0;RUN({r__}) :[deadlock-free]
+assert P_pkg465_main_Movement_stm_ref0 :[deterministic]
+assert P_pkg465_main_Movement_stm_ref0 :[divergence-free]

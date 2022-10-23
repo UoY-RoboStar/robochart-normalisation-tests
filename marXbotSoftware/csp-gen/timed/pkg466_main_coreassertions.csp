@@ -1,0 +1,236 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 28-09-2022 20:22:29
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "pkg466_main.csp"
+
+-- generate pkg466_main_SMMovement
+P_pkg466_main_SMMovement = let
+	id__ = 0
+	
+	
+	
+within
+	pkg466_main::SMMovement::O__(
+		id__,
+		const_pkg466_main_SMMovement_lvel,
+		const_pkg466_main_SMMovement_avel,
+		const_pkg466_main_SMMovement_PI
+	)
+assert P_pkg466_main_SMMovement :[deadlock-free]	
+assert P_pkg466_main_SMMovement;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_SMMovement :[deterministic]
+assert P_pkg466_main_SMMovement :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg466_main_SMMovement[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_SMMovement
+
+-- generate pkg466_main_OP_normal_SMMovement_Moving_entry
+P_pkg466_main_OP_normal_SMMovement_Moving_entry = let
+	id__ = 0
+	
+	
+	const_pkg466_main_normal_SMMovement_Moving_entry_lvel = 0
+	
+	
+within
+	pkg466_main::OP_normal_SMMovement_Moving_entry::O__(id__,
+			    const_pkg466_main_normal_SMMovement_Moving_entry_lvel)
+assert P_pkg466_main_OP_normal_SMMovement_Moving_entry :[deadlock-free]	
+assert P_pkg466_main_OP_normal_SMMovement_Moving_entry;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_OP_normal_SMMovement_Moving_entry :[deterministic]
+assert P_pkg466_main_OP_normal_SMMovement_Moving_entry :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg466_main_OP_normal_SMMovement_Moving_entry[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_OP_normal_SMMovement_Moving_entry
+-- generate pkg466_main_OP_tStop
+P_pkg466_main_OP_tStop = let
+	id__ = 0
+	
+	
+	
+	
+within
+	pkg466_main::OP_tStop::O__(id__)
+assert P_pkg466_main_OP_tStop :[deadlock-free]	
+assert P_pkg466_main_OP_tStop;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_OP_tStop :[deterministic]
+assert P_pkg466_main_OP_tStop :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg466_main_OP_tStop[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_OP_tStop
+-- generate pkg466_main_OP_deadlineCheck
+P_pkg466_main_OP_deadlineCheck = let
+	id__ = 0
+	
+	param_d = 0
+	
+	
+	
+within
+	pkg466_main::OP_deadlineCheck::O__(id__,
+				param_d)
+assert P_pkg466_main_OP_deadlineCheck :[deadlock-free]	
+assert P_pkg466_main_OP_deadlineCheck;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_OP_deadlineCheck :[deterministic]
+assert P_pkg466_main_OP_deadlineCheck :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg466_main_OP_deadlineCheck[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_OP_deadlineCheck
+-- generate pkg466_main_OP_waitOp
+P_pkg466_main_OP_waitOp = let
+	id__ = 0
+	
+	param_i = 0
+	
+	
+	
+within
+	pkg466_main::OP_waitOp::O__(id__,
+				param_i)
+assert P_pkg466_main_OP_waitOp :[deadlock-free]	
+assert P_pkg466_main_OP_waitOp;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_OP_waitOp :[deterministic]
+assert P_pkg466_main_OP_waitOp :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg466_main_OP_waitOp[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_OP_waitOp
+-- generate pkg466_main_OP_waitInterval
+P_pkg466_main_OP_waitInterval = let
+	id__ = 0
+	
+	param_m = 0
+	param_n = 0
+	
+	
+	
+within
+	pkg466_main::OP_waitInterval::O__(id__,
+				param_m,
+				param_n)
+assert P_pkg466_main_OP_waitInterval :[deadlock-free]	
+assert P_pkg466_main_OP_waitInterval;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_OP_waitInterval :[deterministic]
+assert P_pkg466_main_OP_waitInterval :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg466_main_OP_waitInterval[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_OP_waitInterval
+
+-- generate pkg466_main_Movement
+P_pkg466_main_Movement = let
+	id__ = 0
+	
+	
+	
+	const_pkg466_main_Movement_stm_ref0_lvel = const_pkg466_main_SMMovement_lvel
+	const_pkg466_main_Movement_stm_ref0_avel = const_pkg466_main_SMMovement_avel
+	const_pkg466_main_Movement_stm_ref0_PI = const_pkg466_main_SMMovement_PI
+		
+within
+	pkg466_main::Movement::O__(id__,
+			    const_pkg466_main_Movement_stm_ref0_lvel,
+			    const_pkg466_main_Movement_stm_ref0_avel,
+			    const_pkg466_main_Movement_stm_ref0_PI)
+
+assert P_pkg466_main_Movement :[deadlock-free]	
+assert P_pkg466_main_Movement;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_Movement :[deterministic]
+assert P_pkg466_main_Movement :[divergence-free]
+
+-- generate pkg466_main_Movement_stm_ref0
+P_pkg466_main_Movement_stm_ref0 = let
+	id__ = 0
+	
+	
+	
+within
+	pkg466_main::Movement::stm_ref0::O__(
+		id__,
+		const_pkg466_main_SMMovement_lvel,
+		const_pkg466_main_SMMovement_avel,
+		const_pkg466_main_SMMovement_PI
+	)
+assert P_pkg466_main_Movement_stm_ref0 :[deadlock-free]	
+assert P_pkg466_main_Movement_stm_ref0;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_Movement_stm_ref0 :[deterministic]
+assert P_pkg466_main_Movement_stm_ref0 :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg466_main_Movement_stm_ref0[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_Movement_stm_ref0
+-- timed deadlock free
+assert prioritise(P_pkg466_main_Movement[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_Movement
+
+-- generate pkg466_main_marXbotSoftware
+P_pkg466_main_marXbotSoftware = let
+	id__ = 0
+	
+	
+	
+	const_pkg466_main_Movement_stm_ref0_lvel = const_pkg466_main_SMMovement_lvel
+	const_pkg466_main_Movement_stm_ref0_avel = const_pkg466_main_SMMovement_avel
+	const_pkg466_main_Movement_stm_ref0_PI = const_pkg466_main_SMMovement_PI
+		
+	
+within
+	pkg466_main::marXbotSoftware::O__(id__,
+			    const_pkg466_main_Movement_stm_ref0_lvel,
+			    const_pkg466_main_Movement_stm_ref0_avel,
+			    const_pkg466_main_Movement_stm_ref0_PI)
+assert P_pkg466_main_marXbotSoftware :[deadlock-free]	
+assert P_pkg466_main_marXbotSoftware;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_marXbotSoftware :[deterministic]
+assert P_pkg466_main_marXbotSoftware :[divergence-free]
+
+-- generate pkg466_main_marXbotSoftware_ctrl_ref0
+P_pkg466_main_marXbotSoftware_ctrl_ref0 = let
+	id__ = 0
+	
+	
+	
+	const_pkg466_main_Movement_stm_ref0_lvel = const_pkg466_main_SMMovement_lvel
+	const_pkg466_main_Movement_stm_ref0_avel = const_pkg466_main_SMMovement_avel
+	const_pkg466_main_Movement_stm_ref0_PI = const_pkg466_main_SMMovement_PI
+		
+within
+	pkg466_main::marXbotSoftware::ctrl_ref0::O__(id__,
+			    const_pkg466_main_Movement_stm_ref0_lvel,
+			    const_pkg466_main_Movement_stm_ref0_avel,
+			    const_pkg466_main_Movement_stm_ref0_PI)
+
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0 :[deadlock-free]	
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0 :[deterministic]
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0 :[divergence-free]
+
+-- timed deadlock free
+assert prioritise(P_pkg466_main_marXbotSoftware_ctrl_ref0[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_marXbotSoftware_ctrl_ref0
+-- timed deadlock free
+assert prioritise(P_pkg466_main_marXbotSoftware[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg466_main_marXbotSoftware

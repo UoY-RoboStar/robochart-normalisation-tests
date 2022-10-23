@@ -1,0 +1,39 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 28-09-2022 20:23:04
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "core_timed_defs.csp"
+include "core_defs.csp"
+include "state_timed_defs.csp"
+include "pkg465_main_defs.csp"
+include "pkg465_main_normal_SMMovement_Moving_entry.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+
+transparent wbisim
+channel r__
+-- generate pkg465_main_OP_normal_SMMovement_Moving_entry
+P_pkg465_main_OP_normal_SMMovement_Moving_entry = let
+	id__ = 0
+	
+	
+	const_pkg465_main_normal_SMMovement_Moving_entry_lvel = 0
+	
+	
+within
+	pkg465_main::OP_normal_SMMovement_Moving_entry::O__(id__,
+			    const_pkg465_main_normal_SMMovement_Moving_entry_lvel)
+assert P_pkg465_main_OP_normal_SMMovement_Moving_entry :[deadlock-free]	
+assert P_pkg465_main_OP_normal_SMMovement_Moving_entry;RUN({r__}) :[deadlock-free]
+assert P_pkg465_main_OP_normal_SMMovement_Moving_entry :[deterministic]
+assert P_pkg465_main_OP_normal_SMMovement_Moving_entry :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg465_main_OP_normal_SMMovement_Moving_entry[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg465_main_OP_normal_SMMovement_Moving_entry

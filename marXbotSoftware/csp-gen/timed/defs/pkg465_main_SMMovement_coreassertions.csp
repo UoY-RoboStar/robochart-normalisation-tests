@@ -1,0 +1,41 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 28-09-2022 20:23:04
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "core_timed_defs.csp"
+include "core_defs.csp"
+include "state_timed_defs.csp"
+include "pkg465_main_SMMovement.csp"
+include "pkg465_main_defs.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+
+transparent wbisim
+channel r__
+-- generate pkg465_main_SMMovement
+P_pkg465_main_SMMovement = let
+	id__ = 0
+	
+	
+	
+within
+	pkg465_main_SMMovement::O__(
+		id__,
+		const_pkg465_main_SMMovement_lvel,
+		const_pkg465_main_SMMovement_avel,
+		const_pkg465_main_SMMovement_PI
+	)
+assert P_pkg465_main_SMMovement :[deadlock-free]	
+assert P_pkg465_main_SMMovement;RUN({r__}) :[deadlock-free]
+assert P_pkg465_main_SMMovement :[deterministic]
+assert P_pkg465_main_SMMovement :[divergence-free]
+-- timed deadlock free
+assert prioritise(P_pkg465_main_SMMovement[[tock<-tock,tock<-tock']],<diff(Events,{tock',tock}),{tock}>)\{tock} :[divergence free [FD]]
+
+-- timelock free
+assert RUN({tock}) ||| CHAOS(diff(Events,{|tock|})) [F= P_pkg465_main_SMMovement

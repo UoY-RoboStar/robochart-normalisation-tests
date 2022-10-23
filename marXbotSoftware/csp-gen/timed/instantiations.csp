@@ -1,0 +1,108 @@
+-- generate string
+nametype core_string = LSeq(Char,2)
+
+-- generate const_pkg466_main_SMMovement_avel
+const_pkg466_main_SMMovement_avel = 0
+
+-- generate const_pkg466_main_SMMovement_lvel
+const_pkg466_main_SMMovement_lvel = 0
+
+-- generate -- OPERATION BOUNDS
+
+-- MODULE CONSTANTS
+
+-- CONTROLLER CONSTANTS
+
+-- STATEMACHINE CONSTANTS
+
+-- generate const_pkg465_main_normal_SMMovement_Moving_entry_lvel
+const_pkg465_main_normal_SMMovement_Moving_entry_lvel = 0
+
+-- generate const_pkg465_main_SMMovement_PI
+const_pkg465_main_SMMovement_PI = 0
+
+-- generate const_pkg466_main_SMMovement_PI
+const_pkg466_main_SMMovement_PI = 0
+
+-- generate Plus
+Plus(e1,e2,T) = if member(e1+e2,T) then e1+e2 else e1
+
+-- generate const_pkg466_main_normal_SMMovement_Moving_entry_lvel
+const_pkg466_main_normal_SMMovement_Moving_entry_lvel = 0
+
+-- BASIC TYPES
+
+-- generate --
+
+-- MODULE CONSTANTS
+
+-- CONTROLLER CONSTANTS
+
+-- STATEMACHINE CONSTANTS
+
+-- generate nat
+nametype core_nat = union({0..2},{calc_type_min(Union(
+			{{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{1},{1},{0},{1},{0},{1},{0}}))..calc_type_max(Union({{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{1},{1},{0},{1},{0},{1},{0}}))})
+
+-- generate core_clock_type
+nametype core_clock_type = {0..10}
+
+-- BASIC FUNCTIONS
+
+-- generate const_pkg465_main_Movement_stm_ref0_avel
+const_pkg465_main_Movement_stm_ref0_avel = 0
+
+-- generate real
+nametype core_real = union({ -2..2},{calc_type_min(Union(
+			{{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{avel|avel <- { -2..2}},{0},{1},{avel|avel <- { -2..2}},{1},{lvel|lvel <- { -2..2}},{0},{lvel|lvel <- { -2..2}},{1},{0},{1},{0}}))..calc_type_max(Union({{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{ -2..2},{ -2..2},{ -2..2},{0..2},{0..2},{0..2},{0..2},{avel|avel <- { -2..2}},{0},{1},{avel|avel <- { -2..2}},{1},{lvel|lvel <- { -2..2}},{0},{lvel|lvel <- { -2..2}},{1},{0},{1},{0}}))}) 
+
+-- VECTOR TYPES AND OPERATIONS
+
+
+-- CLOCKS
+
+-- generate const_pkg466_main_Movement_stm_ref0_lvel
+const_pkg466_main_Movement_stm_ref0_lvel = 0
+
+-- generate const_pkg465_main_SMMovement_avel
+const_pkg465_main_SMMovement_avel = 0
+
+-- generate int
+nametype core_int = union({ -2..2},{calc_type_min(Union(
+			{{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{1},{1},{0},{1},{0},{1},{0}}))..calc_type_max(Union({{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0..2},{0},{1},{1},{0},{1},{0},{1},{0}}))})
+
+-- generate const_pkg465_main_Movement_stm_ref0_PI
+const_pkg465_main_Movement_stm_ref0_PI = 0
+
+-- generate Div
+Div(e1,e2,T) = if member(e1/e2,T) then e1/e2 else e1
+
+-- generate Neg
+Neg(e1,T) = if member(-e1,T) then -e1 else e1
+
+-- generate boolean
+nametype core_boolean = Bool
+
+-- generate Mult
+Mult(e1,e2,T) = if member(e1*e2,T) then e1*e2 else e1
+
+-- generate const_pkg465_main_SMMovement_lvel
+const_pkg465_main_SMMovement_lvel = 0
+
+-- generate Modulus
+Modulus(e1,e2,T) = if member(e1%e2,T) then e1%e2 else e1
+
+-- generate const_pkg466_main_Movement_stm_ref0_avel
+const_pkg466_main_Movement_stm_ref0_avel = 0
+
+-- generate const_pkg465_main_Movement_stm_ref0_lvel
+const_pkg465_main_Movement_stm_ref0_lvel = 0
+
+-- generate const_pkg466_main_Movement_stm_ref0_PI
+const_pkg466_main_Movement_stm_ref0_PI = 0
+
+-- OPERATION CONSTANTS
+
+-- generate Minus
+Minus(e1,e2,T) = if member(e1-e2,T) then e1-e2 else e1
+

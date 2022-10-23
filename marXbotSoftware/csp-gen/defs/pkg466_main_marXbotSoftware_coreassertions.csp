@@ -1,0 +1,58 @@
+
+--
+-- RoboChart generator version 3.0.0.202209090727
+-- Automatically generated on 28-09-2022 20:22:29
+--
+-- Iterated compression status: true
+-- Assertions compression status: false
+--
+
+include "core_defs.csp"
+include "state_defs.csp"
+include "pkg466_main_defs.csp"
+include "pkg466_main_marXbotSoftware.csp"
+include "robochart_defs.csp"
+include "../instantiations.csp"
+channel r__
+-- generate pkg466_main_marXbotSoftware
+P_pkg466_main_marXbotSoftware = let
+	id__ = 0
+	
+	
+	
+	const_pkg466_main_Movement_stm_ref0_lvel = const_pkg466_main_SMMovement_lvel
+	const_pkg466_main_Movement_stm_ref0_avel = const_pkg466_main_SMMovement_avel
+	const_pkg466_main_Movement_stm_ref0_PI = const_pkg466_main_SMMovement_PI
+		
+	
+within
+	pkg466_main_marXbotSoftware::O__(id__,
+			    const_pkg466_main_Movement_stm_ref0_lvel,
+			    const_pkg466_main_Movement_stm_ref0_avel,
+			    const_pkg466_main_Movement_stm_ref0_PI)
+assert P_pkg466_main_marXbotSoftware :[deadlock-free]	
+assert P_pkg466_main_marXbotSoftware;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_marXbotSoftware :[deterministic]
+assert P_pkg466_main_marXbotSoftware :[divergence-free]
+
+-- generate pkg466_main_marXbotSoftware_ctrl_ref0
+P_pkg466_main_marXbotSoftware_ctrl_ref0 = let
+	id__ = 0
+	
+	
+	
+	const_pkg466_main_Movement_stm_ref0_lvel = const_pkg466_main_SMMovement_lvel
+	const_pkg466_main_Movement_stm_ref0_avel = const_pkg466_main_SMMovement_avel
+	const_pkg466_main_Movement_stm_ref0_PI = const_pkg466_main_SMMovement_PI
+		
+within
+	pkg466_main_marXbotSoftware::ctrl_ref0::O__(id__,
+			    const_pkg466_main_Movement_stm_ref0_lvel,
+			    const_pkg466_main_Movement_stm_ref0_avel,
+			    const_pkg466_main_Movement_stm_ref0_PI)
+
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0 :[deadlock-free]	
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0;RUN({r__}) :[deadlock-free]
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0 :[deterministic]
+assert P_pkg466_main_marXbotSoftware_ctrl_ref0 :[divergence-free]
+
