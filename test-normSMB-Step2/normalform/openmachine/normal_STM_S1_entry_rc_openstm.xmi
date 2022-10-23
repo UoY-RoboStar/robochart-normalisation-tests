@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<C2S:RCSeqOpenStateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:C2S="http://www.robocalc.circus/C2S" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <left xsi:type="C2S:RCBasicOpenStateMachine">
+    <nodes xsi:type="C2S:EInitial" name="i" entrypoint="true"/>
+    <transitions name="t" source="//@left/@nodes.0" target="//@right/@nodes.0">
+      <action xsi:type="robochart:SeqStatement">
+        <statements xsi:type="robochart:ClockReset">
+          <clock href="../robochart/main.rct#//@interfaces.18/@clocks.0"/>
+        </statements>
+        <statements xsi:type="robochart:Assignment">
+          <left xsi:type="robochart:VarRef">
+            <name xsi:type="robochart:Variable" href="../robochart/main.rct#//@interfaces.18/@variableList.0/@vars.0"/>
+          </left>
+          <right xsi:type="robochart:IntegerExp" value="1"/>
+        </statements>
+        <statements xsi:type="robochart:Wait">
+          <duration xsi:type="robochart:RefExp">
+            <ref xsi:type="robochart:Variable" href="../robochart/main.rct#//@interfaces.18/@variableList.0/@vars.0"/>
+          </duration>
+        </statements>
+      </action>
+    </transitions>
+  </left>
+  <right xsi:type="C2S:RCBasicOpenStateMachine">
+    <nodes xsi:type="C2S:EFinal" name="f" entrypoint="true"/>
+  </right>
+</C2S:RCSeqOpenStateMachine>
